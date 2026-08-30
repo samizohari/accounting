@@ -12,9 +12,9 @@ A fully functional double-entry accounting system built with **pure JavaScript, 
 
 ## Access
 
-- Repository: `https://github.com/[your-username]/accounting` (create as **Private**)
+- Repository: `https://github.com/samizohari/accounting` (create as **Private**)
 - Access Level: Private
-- Owner: [your-username]
+- Owner: samizohari
 - Authorized Collaborators: [List authorized usernames]
 
 ### One-time private repo setup (run once, requires GitHub CLI)
@@ -36,7 +36,7 @@ Enable in **Settings → Code security**: Dependabot alerts, secret scanning, co
 
 1. Clone the repository (requires authorization):
    ```bash
-   git clone https://github.com/[your-username]/accounting.git
+   git clone https://github.com/samizohari/accounting.git
    ```
 2. Open `index.html` in your browser — or serve it with any static server:
    ```bash
