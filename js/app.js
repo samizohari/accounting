@@ -1005,11 +1005,15 @@
     // Profile
     $id('changePwForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      var res = Auth.changePassword($id('cpwCurrent').value, $id('cpwNew').value, $id('cpwConfirm').value);
-      if (res.ok && $id('cpwNew').value !== $id('cpwConfirm').value) res = { ok: false, error: 'Passwords do not match' };
-      $id('cpwResult').textContent = res.ok ? '✓ Password updated' : '✗ ' + res.error;
-      $id('cpwResult').className = 'mt-2 small ' + (res.ok ? 'text-success' : 'text-danger');
-      if (res.ok) e.target.reset();
+      var result;
+      if ($id('cpwNew').value !== $id('cpwConfirm').value) {
+        result = { ok: false, error: 'New passwords do not match' };
+      } else {
+        result = Auth.changePassword($id('cpwCurrent').value, $id('cpwNew').value);
+      }
+      $id('cpwResult').textContent = result.ok ? '✓ Password updated' : '✗ ' + result.error;
+      $id('cpwResult').className = 'mt-2 small ' + (result.ok ? 'text-success' : 'text-danger');
+      if (result.ok) e.target.reset();
     });
     $id('btnSavePrefs').addEventListener('click', App.savePrefs);
 
