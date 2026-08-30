@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Enhanced iPhone / mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Accounting">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Double-Entry Accounting System - pure client-side">
+  <title>Accounting System</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body class="bg-light">
+
+<!-- ==================== AUTH SCREEN ==================== -->
+<div id="screenAuth" class="screen d-none">
+  <div class="auth-wrap">
+    <div class="auth-card card shadow-lg border-0">
+      <div class="card-body p-4 p-md-5">
+        <div class="text-center mb-4">
+          <div class="auth-logo"><i class="bi bi-calculator"></i></div>
+          <h3 class="mb-1 fw-bold">Accounting System</h3>
+          <p class="text-muted mb-0 small">Double-Entry Accounting &middot; 100% Client-Side</p>
+        </div>
+
+        <ul class="nav nav-pills nav-fill mb-4 auth-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tabLogin" data-bs-toggle="pill" data-bs-target="#paneLogin" type="button" role="tab">Login</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tabRegister" data-bs-toggle="pill" data-bs-target="#paneRegister" type="button" role="tab">Register</button>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <!-- LOGIN -->
+          <div class="tab-pane fade show active" id="paneLogin" role="tabpanel">
+            <form id="loginForm" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Username or Email</label>
+                <div class="input-group input-group-touch">
+                  <span class="input-group-text"><i class="bi bi-person"></i></span>
+                  <input type="text" class="form-control" id="loginIdentifier" placeholder="admin" autocomplete="username" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group input-group-touch">
+                  <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                  <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required>
+                  <button class="btn btn-outline-secondary" type="button" id="btnTogglePw"><i class="bi bi-eye"></i></button>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="rememberMe">
+                  <label class="form-check-label small" for="rememberMe">Remember me</label>
+                </div>
+                <a href="#" class="small" id="linkForgot">Forgot password?</a>
+              </div>
+              <div id="loginError" class="alert alert-danger py-2 small d-none"></div>
+              <div id="loginLock" class="alert alert-warning py-2 small d-none"></div>
+              <button type="submit" class="btn btn-primary w-100 btn-touch-large" id="btnLogin">Sign In</button>
+            </form>
+          </div>
+
+          <!-- REGISTER -->
+          <div class="tab-pane fade" id="paneRegister" role="tabpanel">
+            <form id="registerForm" novalidate>
+              <div class="mb-2">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="regFullName" placeholder="John Doe" required>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="regEmail" placeholder="you@example.com" required>
+                <div class="invalid-feedback">Valid email required</div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" id="regUsername" placeholder="johndoe" required>
+                <div class="form-text small" id="regUsernameHint">Check availability as you type</div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="regPassword" placeholder="Min 8 chars, 1 upper, 1 lower, 1 number, 1 special" required>
+                <div class="pw-meter mt-2" id="pwMeter">
+                  <div class="pw-meter-bars"><span></span><span></span><span></span><span></span></div>
+                  <small class="text-muted" id="pwMeterLabel">Password strength</small>
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="regConfirm" required>
+              </div>
+              <div class="mb-2 captcha-row">
+                <label class="form-label">Security check</label>
+                <div class="input-group">
+                  <span class="input-group-text" id="regCaptchaLabel">1 + 2 = ?</span>
+                  <input type="text" class="form-control" id="regCaptcha" placeholder="Answer" inputmode="numeric" required>
+                </div>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="regTerms" required>
+                <label class="form-check-label small" for="regTerms">I agree to the Terms &amp; Conditions and Privacy Policy</label>
+              </div>
+              <div id="regError" class="alert alert-danger py-2 small d-none"></div>
+              <button type="submit" class="btn btn-primary w-100 btn-touch-large" id="btnRegister">Create Account</button>
+              <div id="regSuccess" class="alert alert-success py-2 small mt-3 d-none"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- FORGOT PASSWORD -->
+        <div id="forgotPanel" class="d-none mt-2">
+          <h6 class="mb-2"><i class="bi bi-key"></i> Reset Password</h6>
+          <form id="forgotForm">
+            <div class="mb-2">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="forgotEmail" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-warning w-100 btn-touch-large mb-2">Send Reset Link</button>
+            <a href="#" class="small d-block text-center" id="linkBackLogin">Back to login</a>
+            <div id="forgotResult" class="mt-3 d-none">
+              <div class="alert alert-info small mb-2">Simulated email sent. Demo reset link:</div>
+              <div class="border rounded p-2 small bg-white" id="forgotLink"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== APP SCREEN ==================== -->
+<div id="screenApp" class="screen d-none">
+
+  <!-- Impersonation banner -->
+  <div id="impersonationBanner" class="impersonation-banner d-none">
+    <i class="bi bi-eye-fill"></i>
+    <span>You are impersonating <strong id="impersonationUser"></strong></span>
+    <button class="btn btn-light btn-sm btn-touch" id="btnStopImpersonation">Stop Impersonating</button>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="offcanvas-lg offcanvas-start sidebar" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas-header d-lg-none">
+      <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Close"></button>
+    </div>
+    <div class="sidebar-brand">
+      <i class="bi bi-calculator"></i> <span>Accounting</span>
+    </div>
+    <div class="sidebar-section">Overview</div>
+    <nav class="sidebar-nav">
+      <a class="nav-link active" data-view="dashboard" href="#/dashboard"><i class="bi bi-grid-1x2"></i><span>Dashboard</span></a>
+      <a class="nav-link" data-view="journal" href="#/journal"><i class="bi bi-journal-text"></i><span>Journal Entries</span></a>
+      <a class="nav-link" data-view="accounts" href="#/accounts"><i class="bi bi-diagram-3"></i><span>Chart of Accounts</span></a>
+      <a class="nav-link" data-view="ledger" href="#/ledger"><i class="bi bi-list-ul"></i><span>General Ledger</span></a>
+      <a class="nav-link" data-view="trial-balance" href="#/trial-balance"><i class="bi bi-balance-scale"></i><span>Trial Balance</span></a>
+      <a class="nav-link" data-view="reports" href="#/reports"><i class="bi bi-graph-up"></i><span>Financial Reports</span></a>
+      <a class="nav-link" data-view="reconciliation" href="#/reconciliation"><i class="bi bi-arrow-repeat"></i><span>Reconciliation</span></a>
+      <a class="nav-link" data-view="budget" href="#/budget"><i class="bi bi-pie-chart"></i><span>Budget &amp; Variance</span></a>
+      <a class="nav-link" data-view="data" href="#/data"><i class="bi bi-file-earmark-arrow-up-down"></i><span>Import / Export</span></a>
+    </nav>
+    <div class="sidebar-section admin-only d-none">Administration</div>
+    <nav class="sidebar-nav admin-only d-none">
+      <a class="nav-link" data-view="users" href="#/users"><i class="bi bi-people"></i><span>User Management</span></a>
+      <a class="nav-link" data-view="audit" href="#/audit"><i class="bi bi-journal-check"></i><span>Audit Log</span></a>
+      <a class="nav-link" data-view="settings" href="#/settings"><i class="bi bi-gear"></i><span>System Settings</span></a>
+      <a class="nav-link" data-view="data-mgmt" href="#/data-mgmt"><i class="bi bi-database-gear"></i><span>Data Management</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <a class="nav-link" data-view="profile" href="#/profile"><i class="bi bi-person-circle"></i><span>My Profile</span></a>
+      <a class="nav-link" href="#" id="sidebarLogout"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+      <div class="sidebar-version small">v1.0.0 &middot; PRIVATE</div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main-wrap">
+    <header class="topbar sticky-top">
+      <button class="btn btn-outline-secondary d-lg-none btn-touch me-2" id="btnSidebar" data-bs-toggle="offcanvas" data-bs-target="#sidebar"><i class="bi bi-list"></i></button>
+      <h1 class="topbar-title mb-0" id="pageTitle">Dashboard</h1>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <span class="badge text-bg-light d-none d-md-inline" id="topbarRole">Viewer</span>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-touch dropdown-toggle" data-bs-toggle="dropdown" id="topbarUserBtn">
+            <i class="bi bi-person-circle"></i> <span id="topbarUser" class="d-none d-sm-inline">user</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#/profile"><i class="bi bi-person"></i> My Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#" id="btnLogout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-fluid content">
+
+      <!-- ============ DASHBOARD ============ -->
+      <section class="view" data-view="dashboard">
+        <div class="row g-3" id="kpiRow">
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-primary"><i class="bi bi-cash-stack"></i></div><div><div class="kpi-label">Cash</div><div class="kpi-value" id="kpiCash">-</div></div></div></div>
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-success"><i class="bi bi-graph-up-arrow"></i></div><div><div class="kpi-label">Revenue (MTD)</div><div class="kpi-value" id="kpiRevenueMTD">-</div></div></div></div>
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-danger"><i class="bi bi-graph-down-arrow"></i></div><div><div class="kpi-label">Expenses (MTD)</div><div class="kpi-value" id="kpiExpensesMTD">-</div></div></div></div>
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-info"><i class="bi bi-wallet2"></i></div><div><div class="kpi-label">Net Income (MTD)</div><div class="kpi-value" id="kpiNetIncome">-</div></div></div></div>
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-warning"><i class="bi bi-bank"></i></div><div><div class="kpi-label">Total Assets</div><div class="kpi-value" id="kpiTotalAssets">-</div></div></div></div>
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-secondary"><i class="bi bi-credit-card"></i></div><div><div class="kpi-label">Total Liabilities</div><div class="kpi-value" id="kpiTotalLiabilities">-</div></div></div></div>
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-dark"><i class="bi bi-piggy-bank"></i></div><div><div class="kpi-label">Total Equity</div><div class="kpi-value" id="kpiTotalEquity">-</div></div></div></div>
+          <div class="col-6 col-md-4 col-xl-3"><div class="card kpi-card"><div class="kpi-icon bg-success"><i class="bi bi-journal-richtext"></i></div><div><div class="kpi-label">Journal Entries</div><div class="kpi-value" id="kpiEntries">-</div></div></div></div>
+        </div>
+
+        <div class="row g-3 mt-0">
+          <div class="col-lg-8">
+            <div class="card"><div class="card-header"><i class="bi bi-activity"></i> Cash Flow (Last 12 Months)</div><div class="card-body chart-box"><canvas id="chartCashFlow"></canvas></div></div>
+            <div class="card mt-3"><div class="card-header"><i class="bi bi-bar-chart"></i> Revenue vs Expenses (6 Months)</div><div class="card-body chart-box"><canvas id="chartRevExp"></canvas></div></div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card"><div class="card-header"><i class="bi bi-pie-chart"></i> Expenses by Category</div><div class="card-body chart-box"><canvas id="chartExpensePie"></canvas></div></div>
+            <div class="card mt-3"><div class="card-header"><i class="bi bi-bell"></i> Alerts</div><div class="card-body" id="dashboardAlerts"></div></div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header d-flex justify-content-between align-items-center"><span><i class="bi bi-clock-history"></i> Recent Entries</span><a href="#/journal" class="small">View all</a></div>
+          <div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead><tr><th>Date</th><th>Ref</th><th>Description</th><th class="text-end">Total</th><th>Status</th></tr></thead><tbody id="recentEntriesBody"></tbody></table></div>
+        </div>
+      </section>
+
+      <!-- ============ ACCOUNTS ============ -->
+      <section class="view d-none" data-view="accounts">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-diagram-3"></i> Chart of Accounts</span>
+            <input type="search" class="form-control form-control-sm w-auto" id="accountSearch" placeholder="Search accounts...">
+            <select class="form-select form-select-sm w-auto" id="accountTypeFilter"><option value="">All Types</option><option>Asset</option><option>Liability</option><option>Equity</option><option>Revenue</option><option>Expense</option></select>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportAccounts"><i class="bi bi-download"></i> Export</button>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnImportAccounts"><i class="bi bi-upload"></i> Import</button>
+            <button class="btn btn-primary btn-sm btn-touch" id="btnAddAccount"><i class="bi bi-plus-lg"></i> New Account</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th>Number</th><th>Name</th><th>Type</th><th>Parent</th><th>Normal</th><th>Balance</th><th>Status</th><th class="text-end">Actions</th></tr></thead>
+              <tbody id="accountsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ JOURNAL ============ -->
+      <section class="view d-none" data-view="journal">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-journal-text"></i> Journal Entries</span>
+            <input type="date" class="form-control form-control-sm w-auto" id="journalFrom">
+            <span class="text-muted small">to</span>
+            <input type="date" class="form-control form-control-sm w-auto" id="journalTo">
+            <input type="search" class="form-control form-control-sm w-auto" id="journalSearch" placeholder="Search ref/description...">
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportJournal"><i class="bi bi-download"></i> Export</button>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnImportJournal"><i class="bi bi-upload"></i> Import</button>
+            <button class="btn btn-primary btn-sm btn-touch" id="btnAddEntry"><i class="bi bi-plus-lg"></i> New Entry</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th>Date</th><th>Ref</th><th>Description</th><th class="text-end">Debit</th><th class="text-end">Credit</th><th>Status</th><th class="text-end">Actions</th></tr></thead>
+              <tbody id="journalTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LEDGER ============ -->
+      <section class="view d-none" data-view="ledger">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-list-ul"></i> General Ledger</span>
+            <select class="form-select form-select-sm w-auto" id="ledgerAccount"></select>
+            <input type="date" class="form-control form-control-sm w-auto" id="ledgerFrom">
+            <input type="date" class="form-control form-control-sm w-auto" id="ledgerTo">
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportLedger"><i class="bi bi-download"></i> Export</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th>Date</th><th>Ref</th><th>Description</th><th class="text-end">Debit</th><th class="text-end">Credit</th><th class="text-end">Balance</th></tr></thead>
+              <tbody id="ledgerTableBody"></tbody>
+            </table>
+          </div>
+          <div class="card-footer text-end" id="ledgerSummary"></div>
+        </div>
+      </section>
+
+      <!-- ============ TRIAL BALANCE ============ -->
+      <section class="view d-none" data-view="trial-balance">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-balance-scale"></i> Trial Balance</span>
+            <select class="form-select form-select-sm w-auto" id="tbType">
+              <option value="unadjusted">Unadjusted</option>
+              <option value="adjusted">Adjusted</option>
+              <option value="postClosing">Post-Closing</option>
+            </select>
+            <input type="date" class="form-control form-control-sm w-auto" id="tbAsOf">
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportTB"><i class="bi bi-download"></i> Export</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th>Account</th><th class="text-end">Debit</th><th class="text-end">Credit</th></tr></thead>
+              <tbody id="tbTableBody"></tbody>
+              <tfoot class="table-light fw-bold"><tr><td>TOTALS</td><td class="text-end" id="tbTotalDebit">0.00</td><td class="text-end" id="tbTotalCredit">0.00</td></tr></tfoot>
+            </table>
+          </div>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <span id="tbDiff" class="badge text-bg-success">Debits = Credits</span>
+            <span class="small text-muted">Trial balance verifies that debits equal credits.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ REPORTS ============ -->
+      <section class="view d-none" data-view="reports">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-graph-up"></i> Financial Reports</span>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportStatements"><i class="bi bi-file-earmark-excel"></i> Export All</button>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnPrintReport"><i class="bi bi-printer"></i> Print</button>
+          </div>
+          <div class="card-body">
+            <ul class="nav nav-pills mb-3 report-tabs" id="reportTabs">
+              <li class="nav-item"><button class="nav-link active" data-report="pnl" type="button">Income Statement</button></li>
+              <li class="nav-item"><button class="nav-link" data-report="balance-sheet" type="button">Balance Sheet</button></li>
+              <li class="nav-item"><button class="nav-link" data-report="cash-flow" type="button">Cash Flow</button></li>
+              <li class="nav-item"><button class="nav-link" data-report="retained" type="button">Retained Earnings</button></li>
+              <li class="nav-item"><button class="nav-link" data-report="comparative" type="button">Comparative</button></li>
+            </ul>
+            <div class="report-pane" id="reportPnlPane">
+              <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                <label class="small">From <input type="date" class="form-control form-control-sm d-inline-block w-auto" id="pnlFrom"></label>
+                <label class="small">To <input type="date" class="form-control form-control-sm d-inline-block w-auto" id="pnlTo"></label>
+                <button class="btn btn-primary btn-sm btn-touch" id="btnRunPnl">Generate</button>
+                <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportPnl"><i class="bi bi-download"></i> Excel</button>
+              </div>
+              <div id="reportPnl"></div>
+            </div>
+            <div class="report-pane d-none" id="reportBsPane">
+              <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                <label class="small">As of <input type="date" class="form-control form-control-sm d-inline-block w-auto" id="bsAsOf"></label>
+                <button class="btn btn-primary btn-sm btn-touch" id="btnRunBs">Generate</button>
+                <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportBs"><i class="bi bi-download"></i> Excel</button>
+              </div>
+              <div id="reportBs"></div>
+            </div>
+            <div class="report-pane d-none" id="reportCfPane">
+              <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                <label class="small">From <input type="date" class="form-control form-control-sm d-inline-block w-auto" id="cfFrom"></label>
+                <label class="small">To <input type="date" class="form-control form-control-sm d-inline-block w-auto" id="cfTo"></label>
+                <select class="form-select form-select-sm w-auto" id="cfMethod"><option value="direct">Direct Method</option><option value="indirect">Indirect Method</option></select>
+                <button class="btn btn-primary btn-sm btn-touch" id="btnRunCf">Generate</button>
+                <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportCf"><i class="bi bi-download"></i> Excel</button>
+              </div>
+              <div id="reportCf"></div>
+            </div>
+            <div class="report-pane d-none" id="reportRePane">
+              <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                <label class="small">From <input type="date" class="form-control form-control-sm d-inline-block w-auto" id="reFrom"></label>
+                <label class="small">To <input type="date" class="form-control form-control-sm d-inline-block w-auto" id="reTo"></label>
+                <button class="btn btn-primary btn-sm btn-touch" id="btnRunRe">Generate</button>
+                <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportRe"><i class="bi bi-download"></i> Excel</button>
+              </div>
+              <div id="reportRe"></div>
+            </div>
+            <div class="report-pane d-none" id="reportCmpPane">
+              <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                <select class="form-select form-select-sm w-auto" id="cmpType"><option value="month">Month-over-Month</option><option value="year">Year-over-Year</option></select>
+                <input type="month" class="form-control form-control-sm w-auto" id="cmpPeriod">
+                <button class="btn btn-primary btn-sm btn-touch" id="btnRunCmp">Generate</button>
+                <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportCmp"><i class="bi bi-download"></i> Excel</button>
+              </div>
+              <div id="reportCmp"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ RECONCILIATION ============ -->
+      <section class="view d-none" data-view="reconciliation">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-arrow-repeat"></i> Bank Reconciliation</span>
+            <input type="date" class="form-control form-control-sm w-auto" id="reconFrom">
+            <input type="date" class="form-control form-control-sm w-auto" id="reconTo">
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnImportBank"><i class="bi bi-upload"></i> Import Statement</button>
+            <input type="file" id="reconFile" class="d-none" accept=".csv,.xlsx,.xls">
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportRecon"><i class="bi bi-download"></i> Report</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th></th><th>Date</th><th>Ref</th><th>Description</th><th class="text-end">Amount</th><th>Reconciled</th></tr></thead>
+              <tbody id="reconTableBody"></tbody>
+            </table>
+          </div>
+          <div class="card-footer d-flex justify-content-between"><span id="reconSummary"></span><button class="btn btn-success btn-sm btn-touch" id="btnMarkReconciled"><i class="bi bi-check2-circle"></i> Mark Selected Reconciled</button></div>
+        </div>
+      </section>
+
+      <!-- ============ BUDGET ============ -->
+      <section class="view d-none" data-view="budget">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-pie-chart"></i> Budget vs Actual</span>
+            <input type="month" class="form-control form-control-sm w-auto" id="budgetPeriod">
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnTemplateBudget"><i class="bi bi-file-earmark-excel"></i> Template</button>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnImportBudget"><i class="bi bi-upload"></i> Import</button>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportBudget"><i class="bi bi-download"></i> Export</button>
+            <button class="btn btn-primary btn-sm btn-touch" id="btnAddBudget"><i class="bi bi-plus-lg"></i> Set Budget</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th>Account</th><th class="text-end">Budget</th><th class="text-end">Actual</th><th class="text-end">Variance</th><th>Status</th></tr></thead>
+              <tbody id="budgetTableBody"></tbody>
+            </table>
+          </div>
+          <div class="card-body" id="reportBudget"></div>
+        </div>
+      </section>
+
+      <!-- ============ DATA (IMPORT/EXPORT) ============ -->
+      <section class="view d-none" data-view="data">
+        <div class="row g-3">
+          <div class="col-lg-6">
+            <div class="card h-100">
+              <div class="card-header"><i class="bi bi-upload"></i> Import Data</div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <label class="form-label">Data Type</label>
+                  <select class="form-select" id="importType">
+                    <option value="accounts">Chart of Accounts</option>
+                    <option value="journal">Journal Entries</option>
+                    <option value="bank">Bank Statement</option>
+                    <option value="budget">Budget</option>
+                  </select>
+                </div>
+                <div class="drop-zone" id="dropZone">
+                  <i class="bi bi-cloud-arrow-up display-5"></i>
+                  <p class="mb-1">Drag &amp; drop file here or tap to browse</p>
+                  <small class="text-muted">CSV, XLSX or XLS &middot; max 50 MB</small>
+                  <input type="file" id="importFile" class="d-none" accept=".csv,.xlsx,.xls">
+                </div>
+                <button class="btn btn-primary w-100 btn-touch-large mt-3" id="btnChooseFile"><i class="bi bi-folder2-open"></i> Choose File</button>
+                <div id="importResult" class="mt-3"></div>
+                <div id="importPreviewArea" class="mt-3 d-none">
+                  <h6><i class="bi bi-eye"></i> Preview</h6>
+                  <div class="table-responsive"><table class="table table-sm table-bordered"><tbody id="importPreviewBody"></tbody></table></div>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-success btn-sm btn-touch" id="btnCommitImport"><i class="bi bi-check2-circle"></i> Commit Import</button>
+                    <button class="btn btn-outline-danger btn-sm btn-touch d-none" id="btnDownloadErrors"><i class="bi bi-file-earmark-excel"></i> Error Report</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card h-100">
+              <div class="card-header"><i class="bi bi-download"></i> Export &amp; Templates</div>
+              <div class="card-body">
+                <h6 class="text-muted small">Full Export (multi-sheet Excel)</h6>
+                <div class="d-grid gap-2 mb-3">
+                  <button class="btn btn-primary btn-touch" id="btnExportAll"><i class="bi bi-file-earmark-excel"></i> Export All Data (.xlsx)</button>
+                </div>
+                <h6 class="text-muted small">Individual Exports</h6>
+                <div class="d-grid gap-2 mb-3">
+                  <button class="btn btn-outline-primary btn-touch" id="btnExportAccountsX"><i class="bi bi-diagram-3"></i> Chart of Accounts</button>
+                  <button class="btn btn-outline-primary btn-touch" id="btnExportJournalX"><i class="bi bi-journal-text"></i> Journal Entries</button>
+                  <button class="btn btn-outline-primary btn-touch" id="btnExportTBX"><i class="bi bi-balance-scale"></i> Trial Balance</button>
+                  <button class="btn btn-outline-primary btn-touch" id="btnExportLedgerX"><i class="bi bi-list-ul"></i> General Ledger</button>
+                  <button class="btn btn-outline-primary btn-touch" id="btnExportStatementsX"><i class="bi bi-graph-up"></i> Financial Statements</button>
+                  <button class="btn btn-outline-primary btn-touch" id="btnExportAuditX"><i class="bi bi-journal-check"></i> Audit Log (Admin)</button>
+                  <button class="btn btn-outline-primary btn-touch" id="btnExportUsersX"><i class="bi bi-people"></i> Users (Admin)</button>
+                </div>
+                <h6 class="text-muted small">Download Templates</h6>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-outline-secondary btn-touch" id="btnTplAccounts"><i class="bi bi-file-earmark-excel"></i> Accounts Template</button>
+                  <button class="btn btn-outline-secondary btn-touch" id="btnTplJournal"><i class="bi bi-file-earmark-excel"></i> Journal Template</button>
+                  <button class="btn btn-outline-secondary btn-touch" id="btnTplBank"><i class="bi bi-file-earmark-excel"></i> Bank Statement Template</button>
+                  <button class="btn btn-outline-secondary btn-touch" id="btnTplBudget"><i class="bi bi-file-earmark-excel"></i> Budget Template</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ USERS (ADMIN) ============ -->
+      <section class="view d-none" data-view="users">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-people"></i> User Management</span>
+            <input type="search" class="form-control form-control-sm w-auto" id="userSearch" placeholder="Search users...">
+            <select class="form-select form-select-sm w-auto" id="userRoleFilter"><option value="">All Roles</option><option value="admin">Admin</option><option value="accountant">Accountant</option><option value="viewer">Viewer</option></select>
+            <select class="form-select form-select-sm w-auto" id="userStatusFilter"><option value="">All Status</option><option value="active">Active</option><option value="inactive">Inactive</option></select>
+            <button class="btn btn-primary btn-sm btn-touch" id="btnAddUser"><i class="bi bi-person-plus"></i> Add User</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th><th>Status</th><th>Created</th><th>Last Login</th><th class="text-end">Actions</th></tr></thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ AUDIT LOG (ADMIN) ============ -->
+      <section class="view d-none" data-view="audit">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center">
+            <span class="me-auto"><i class="bi bi-journal-check"></i> Audit Log</span>
+            <select class="form-select form-select-sm w-auto" id="auditUser"></select>
+            <select class="form-select form-select-sm w-auto" id="auditAction"></select>
+            <input type="date" class="form-control form-control-sm w-auto" id="auditFrom">
+            <input type="date" class="form-control form-control-sm w-auto" id="auditTo">
+            <input type="search" class="form-control form-control-sm w-auto" id="auditKeyword" placeholder="Search...">
+            <button class="btn btn-outline-primary btn-sm btn-touch" id="btnApplyAudit"><i class="bi bi-funnel"></i> Filter</button>
+            <button class="btn btn-outline-secondary btn-sm btn-touch" id="btnExportAudit"><i class="bi bi-download"></i> Export</button>
+            <button class="btn btn-outline-danger btn-sm btn-touch" id="btnClearAudit"><i class="bi bi-trash"></i> Clear</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle table-sm mb-0">
+              <thead><tr><th>Timestamp</th><th>User</th><th>Role</th><th>Action</th><th>Details</th><th>IP</th><th>Device</th></tr></thead>
+              <tbody id="auditTableBody"></tbody>
+            </table>
+          </div>
+          <div class="card-footer small text-muted" id="auditSummary"></div>
+        </div>
+      </section>
+
+      <!-- ============ SETTINGS (ADMIN) ============ -->
+      <section class="view d-none" data-view="settings">
+        <form id="settingsForm">
+          <div class="row g-3">
+            <div class="col-lg-6">
+              <div class="card"><div class="card-header"><i class="bi bi-building"></i> General Settings</div><div class="card-body">
+                <div class="mb-2"><label class="form-label">Company Name</label><input type="text" class="form-control" id="setCompanyName"></div>
+                <div class="mb-2"><label class="form-label">Default Currency</label><select class="form-select" id="setCurrency"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>CNY</option><option>SGD</option><option>INR</option><option>AUD</option><option>CAD</option></select></div>
+                <div class="mb-2"><label class="form-label">Date Format</label><select class="form-select" id="setDateFormat"><option value="MM/DD/YYYY">MM/DD/YYYY</option><option value="DD/MM/YYYY">DD/MM/YYYY</option><option value="YYYY-MM-DD">YYYY-MM-DD</option></select></div>
+                <div class="mb-2"><label class="form-label">Timezone</label><input type="text" class="form-control" id="setTimezone" placeholder="UTC"></div>
+                <div class="mb-2"><label class="form-label">Fiscal Year Starts</label><select class="form-select" id="setFiscalStart"><option>January</option><option>April</option><option>July</option><option>October</option></select></div>
+              </div></div>
+              <div class="card mt-3"><div class="card-header"><i class="bi bi-shield-lock"></i> Security Settings</div><div class="card-body">
+                <div class="row g-2">
+                  <div class="col-6"><label class="form-label">Session Timeout (min)</label><input type="number" class="form-control" id="setSessionTimeout" min="1" max="240"></div>
+                  <div class="col-6"><label class="form-label">Max Login Attempts</label><input type="number" class="form-control" id="setMaxLoginAttempts" min="3" max="10"></div>
+                  <div class="col-6"><label class="form-label">Password Expiry (days)</label><input type="number" class="form-control" id="setPasswordExpiry" min="0" max="365"></div>
+                </div>
+                <div class="form-check form-switch mt-2"><input class="form-check-input" type="checkbox" id="setEnable2FA"><label class="form-check-label" for="setEnable2FA">Enable 2FA (simulated)</label></div>
+                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="setForcePwChange"><label class="form-check-label" for="setForcePwChange">Force password change on first login</label></div>
+              </div></div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card"><div class="card-header"><i class="bi bi-database"></i> Data Settings</div><div class="card-body">
+                <div class="row g-2">
+                  <div class="col-6"><label class="form-label">Auto-Backup</label><select class="form-select" id="setAutoBackup"><option value="none">Disabled</option><option value="daily">Daily</option><option value="weekly">Weekly</option></select></div>
+                  <div class="col-6"><label class="form-label">Backup Retention (days)</label><input type="number" class="form-control" id="setBackupRetention" min="1" max="365"></div>
+                  <div class="col-6"><label class="form-label">Log Retention (days)</label><input type="number" class="form-control" id="setLogRetention" min="7" max="3650"></div>
+                  <div class="col-6"><label class="form-label">Max Upload (MB)</label><input type="number" class="form-control" id="setMaxUpload" min="1" max="200"></div>
+                </div>
+                <label class="form-label mt-2">Allowed File Types</label>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="setAllowCsv" value="csv"><label class="form-check-label">CSV</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="setAllowXlsx" value="xlsx"><label class="form-check-label">XLSX</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="setAllowXls" value="xls"><label class="form-check-label">XLS</label></div>
+              </div></div>
+              <div class="card mt-3"><div class="card-header"><i class="bi bi-bell"></i> Notifications</div><div class="card-body">
+                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="setEnableNotifications"><label class="form-check-label" for="setEnableNotifications">Email notifications</label></div>
+                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="setInAppNotif"><label class="form-check-label" for="setInAppNotif">In-app notifications</label></div>
+                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="setCriticalAlerts"><label class="form-check-label" for="setCriticalAlerts">Critical alerts</label></div>
+              </div></div>
+            </div>
+          </div>
+          <div class="mt-3"><button type="submit" class="btn btn-primary btn-touch-large"><i class="bi bi-check-lg"></i> Save Settings</button> <span id="settingsResult" class="ms-2"></span></div>
+        </form>
+      </section>
+
+      <!-- ============ DATA MANAGEMENT (ADMIN) ============ -->
+      <section class="view d-none" data-view="data-mgmt">
+        <div class="row g-3">
+          <div class="col-lg-6">
+            <div class="card"><div class="card-header"><i class="bi bi-database"></i> Backup &amp; Restore</div><div class="card-body">
+              <p class="small text-muted">Export all data (users, accounts, entries, logs, settings) to a JSON backup file, or restore from a previous backup.</p>
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-touch" id="btnBackup"><i class="bi bi-download"></i> System Backup (JSON)</button>
+                <button class="btn btn-outline-primary btn-touch" id="btnRestore"><i class="bi bi-upload"></i> Restore from Backup</button>
+                <input type="file" id="restoreFile" class="d-none" accept=".json">
+              </div>
+              <div class="mt-3 small text-muted" id="storageInfo"></div>
+            </div></div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card"><div class="card-header"><i class="bi bi-tools"></i> Maintenance</div><div class="card-body">
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary btn-touch" id="btnIntegrity"><i class="bi bi-shield-check"></i> Data Integrity Check</button>
+                <button class="btn btn-outline-secondary btn-touch" id="btnCleanup"><i class="bi bi-broom"></i> Orphan Record Cleanup</button>
+                <button class="btn btn-outline-secondary btn-touch" id="btnImportSample"><i class="bi bi-magic"></i> Import Sample Data</button>
+                <button class="btn btn-outline-secondary btn-touch" id="btnExportUsersData"><i class="bi bi-people"></i> Export All User Data</button>
+              </div>
+              <div id="dataMgmtResult" class="mt-3 small"></div>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE ============ -->
+      <section class="view d-none" data-view="profile">
+        <div class="row g-3">
+          <div class="col-lg-6">
+            <div class="card"><div class="card-header"><i class="bi bi-person-circle"></i> Account Info</div><div class="card-body">
+              <div class="mb-2"><strong>Name:</strong> <span id="profileName"></span></div>
+              <div class="mb-2"><strong>Username:</strong> <span id="profileUsername"></span></div>
+              <div class="mb-2"><strong>Email:</strong> <span id="profileEmail"></span></div>
+              <div class="mb-2"><strong>Role:</strong> <span id="profileRole"></span></div>
+              <div class="mb-2"><strong>Last Login:</strong> <span id="profileLastLogin"></span></div>
+            </div></div>
+            <div class="card mt-3"><div class="card-header"><i class="bi bi-sliders"></i> Preferences</div><div class="card-body">
+              <div class="mb-2"><label class="form-label">Date Format</label><select class="form-select" id="prefDateFormat"><option value="MM/DD/YYYY">MM/DD/YYYY</option><option value="DD/MM/YYYY">DD/MM/YYYY</option><option value="YYYY-MM-DD">YYYY-MM-DD</option></select></div>
+              <div class="mb-2"><label class="form-label">Currency</label><select class="form-select" id="prefCurrency"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>CNY</option><option>SGD</option><option>INR</option><option>AUD</option><option>CAD</option></select></div>
+              <div class="mb-2"><label class="form-label">Theme</label><select class="form-select" id="prefTheme"><option value="light">Light</option><option value="dark">Dark</option></select></div>
+              <button class="btn btn-primary btn-touch" id="btnSavePrefs">Save Preferences</button> <span id="prefsResult" class="ms-2 small"></span>
+            </div></div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card"><div class="card-header"><i class="bi bi-key"></i> Change Password</div><div class="card-body">
+              <form id="changePwForm">
+                <div class="mb-2"><label class="form-label">Current Password</label><input type="password" class="form-control" id="cpwCurrent" required></div>
+                <div class="mb-2"><label class="form-label">New Password</label><input type="password" class="form-control" id="cpwNew" required></div>
+                <div class="mb-3"><label class="form-label">Confirm New Password</label><input type="password" class="form-control" id="cpwConfirm" required></div>
+                <button type="submit" class="btn btn-primary btn-touch-large">Update Password</button>
+                <div id="cpwResult" class="mt-2 small"></div>
+              </form>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.content -->
+  </div><!-- /.main-wrap -->
+
+  <!-- Bottom navigation (mobile) -->
+  <nav class="bottom-nav d-sm-none" id="bottomNav">
+    <a class="nav-item active" data-view="dashboard" href="#/dashboard"><i class="bi bi-grid-1x2"></i><span class="nav-label">Home</span></a>
+    <a class="nav-item" data-view="journal" href="#/journal"><i class="bi bi-journal-text"></i><span class="nav-label">Journal</span></a>
+    <a class="nav-item" data-view="reports" href="#/reports"><i class="bi bi-graph-up"></i><span class="nav-label">Reports</span></a>
+    <a class="nav-item" data-view="data" href="#/data"><i class="bi bi-file-earmark-arrow-up-down"></i><span class="nav-label">Data</span></a>
+    <a class="nav-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#sidebar" id="btnMoreNav"><i class="bi bi-list"></i><span class="nav-label">More</span></a>
+  </nav>
+</div><!-- /#screenApp -->
+
+<!-- ==================== MODALS ==================== -->
+
+<!-- Account modal -->
+<div class="modal fade" id="modalAccount" tabindex="-1"><div class="modal-dialog modal-fullscreen-mobile"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="accountModalTitle">New Account</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body">
+    <form id="accountForm">
+      <input type="hidden" id="accId">
+      <div class="mb-2"><label class="form-label">Account Number</label><input type="text" class="form-control" id="accNumber" placeholder="1000" required></div>
+      <div class="mb-2"><label class="form-label">Account Name</label><input type="text" class="form-control" id="accName" placeholder="Cash" required></div>
+      <div class="mb-2"><label class="form-label">Type</label><select class="form-select" id="accType"><option>Asset</option><option>Liability</option><option>Equity</option><option>Revenue</option><option>Expense</option></select></div>
+      <div class="mb-2"><label class="form-label">Parent Account</label><select class="form-select" id="accParent"><option value="">— None (Top Level) —</option></select></div>
+      <div class="mb-2"><label class="form-label">Normal Balance</label><select class="form-select" id="accNormalBalance"><option>Debit</option><option>Credit</option></select></div>
+      <div class="mb-3"><label class="form-label">Status</label><select class="form-select" id="accStatus"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
+      <div id="accountModalError" class="alert alert-danger py-2 small d-none"></div>
+      <button type="submit" class="btn btn-primary w-100 btn-touch-large">Save Account</button>
+    </form>
+  </div>
+</div></div></div>
+
+<!-- Journal entry modal -->
+<div class="modal fade" id="modalEntry" tabindex="-1"><div class="modal-dialog modal-lg modal-fullscreen-mobile"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="entryModalTitle">New Journal Entry</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body">
+    <form id="entryForm">
+      <input type="hidden" id="entryId">
+      <div class="row g-2 mb-2">
+        <div class="col-6 col-md-3"><label class="form-label">Date</label><input type="date" class="form-control" id="entryDate" required></div>
+        <div class="col-6 col-md-3"><label class="form-label">Reference</label><input type="text" class="form-control" id="entryReference" placeholder="INV-001"></div>
+        <div class="col-md-6"><label class="form-label">Description</label><input type="text" class="form-control" id="entryDescription" placeholder="Sales revenue" required></div>
+      </div>
+      <div class="row g-2 mb-2">
+        <div class="col-6 col-md-3"><label class="form-label">Status</label><select class="form-select" id="entryStatus"><option value="active">Active</option><option value="draft">Draft</option></select></div>
+        <div class="col-6 col-md-3"><label class="form-label">Recurring</label><select class="form-select" id="entryRecurring"><option value="">None</option><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option></select></div>
+        <div class="col-md-6"><label class="form-label">Notes</label><input type="text" class="form-control" id="entryNotes" placeholder="Optional memo"></div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <label class="form-label mb-0">Entry Lines <span class="text-muted">(debits must equal credits)</span></label>
+        <button type="button" class="btn btn-outline-primary btn-sm btn-touch" id="btnAddLine"><i class="bi bi-plus-lg"></i> Add Line</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-sm align-middle entry-lines">
+          <thead><tr><th>Account</th><th>Description</th><th class="text-end">Debit</th><th class="text-end">Credit</th><th></th></tr></thead>
+          <tbody id="entryLinesBody"></tbody>
+          <tfoot><tr class="table-light"><th colspan="2">TOTALS</th><th class="text-end" id="entryTotalDebit">0.00</th><th class="text-end" id="entryTotalCredit">0.00</th><th></th></tr></tfoot>
+        </table>
+      </div>
+      <div id="entryBalanceStatus" class="alert alert-danger py-2 small d-none">Entry is not balanced</div>
+      <div id="entryModalError" class="alert alert-danger py-2 small d-none"></div>
+      <button type="submit" class="btn btn-primary w-100 btn-touch-large">Save Entry</button>
+    </form>
+  </div>
+</div></div></div>
+
+<!-- Entry view modal -->
+<div class="modal fade" id="modalEntryView" tabindex="-1"><div class="modal-dialog modal-lg modal-fullscreen-mobile"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title">Entry Details</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body"><div id="entryViewBody"></div></div>
+</div></div></div>
+
+<!-- User modal -->
+<div class="modal fade" id="modalUser" tabindex="-1"><div class="modal-dialog modal-fullscreen-mobile"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="userModalTitle">Add User</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body">
+    <form id="userForm">
+      <input type="hidden" id="userId">
+      <div class="mb-2"><label class="form-label">Full Name</label><input type="text" class="form-control" id="userFullName" required></div>
+      <div class="mb-2"><label class="form-label">Email</label><input type="email" class="form-control" id="userEmail" required></div>
+      <div class="mb-2"><label class="form-label">Username</label><input type="text" class="form-control" id="userUsername" required></div>
+      <div class="mb-2" id="userPasswordGroup"><label class="form-label">Password</label><div class="input-group"><input type="text" class="form-control" id="userPassword" required><button class="btn btn-outline-secondary" type="button" id="btnGenPassword"><i class="bi bi-dice-5"></i> Generate</button></div></div>
+      <div class="mb-2"><label class="form-label">Role</label><select class="form-select" id="userRole"><option value="viewer">Viewer</option><option value="accountant">Accountant</option><option value="admin">Admin</option></select></div>
+      <div class="mb-2"><label class="form-label">Status</label><select class="form-select" id="userStatus"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
+      <div class="form-check mb-2" id="userWelcomeGroup"><input class="form-check-input" type="checkbox" id="userWelcome"><label class="form-check-label small" for="userWelcome">Send welcome email (simulated)</label></div>
+      <div class="form-check mb-3" id="userForceGroup"><input class="form-check-input" type="checkbox" id="userForceReset"><label class="form-check-label small" for="userForceReset">Force password change on next login</label></div>
+      <div id="userModalError" class="alert alert-danger py-2 small d-none"></div>
+      <button type="submit" class="btn btn-primary w-100 btn-touch-large">Save User</button>
+    </form>
+  </div>
+</div></div></div>
+
+<!-- Generic confirm modal -->
+<div class="modal fade" id="modalConfirm" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="confirmTitle">Confirm</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body" id="confirmMessage">Are you sure?</div>
+  <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button type="button" class="btn btn-danger" id="confirmOkBtn">Yes</button></div>
+</div></div></div>
+
+<!-- Reset password modal -->
+<div class="modal fade" id="modalResetPw" tabindex="-1"><div class="modal-dialog modal-fullscreen-mobile"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title">Reset User Password</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body">
+    <form id="resetPwForm">
+      <input type="hidden" id="resetPwUserId">
+      <div class="mb-2"><label class="form-label">New Password</label><input type="text" class="form-control" id="resetPwNew" required></div>
+      <div class="mb-3"><label class="form-label">Confirm New Password</label><input type="password" class="form-control" id="resetPwConfirm" required></div>
+      <div id="resetPwError" class="alert alert-danger py-2 small d-none"></div>
+      <button type="submit" class="btn btn-primary w-100 btn-touch-large">Reset Password</button>
+    </form>
+  </div>
+</div></div></div>
+
+<!-- User activity modal -->
+<div class="modal fade" id="modalUserActivity" tabindex="-1"><div class="modal-dialog modal-lg modal-fullscreen-mobile"><div class="modal-content">
+  <div class="modal-header"><h5 class="modal-title" id="userActivityTitle">User Activity</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body"><div class="table-responsive"><table class="table table-sm"><thead><tr><th>Timestamp</th><th>Action</th><th>Details</th></tr></thead><tbody id="userActivityBody"></tbody></table></div></div>
+</div></div></div>
+
+<!-- Session timeout warning toast -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-5 p-3">
+  <div class="toast align-items-center text-bg-warning border-0" id="sessionToast" role="alert"><div class="d-flex"><div class="toast-body"><i class="bi bi-clock-history"></i> Session expiring soon. Click <a href="#" class="text-dark" id="sessionExtend"><u>here</u></a> to stay signed in.</div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button></div></div>
+</div>
+
+<!-- CDN Libraries -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Application Modules -->
+<script src="js/utils.js"></script>
+<script src="js/permissions.js"></script>
+<script src="js/audit-log.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/accounting.js"></script>
+<script src="js/csv-handler.js"></script>
+<script src="js/excel-handler.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/mobile.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
