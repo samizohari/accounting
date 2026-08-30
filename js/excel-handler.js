@@ -49,6 +49,7 @@
 
   /* ---------------- Full multi-sheet export ---------------- */
   Excel.exportAllWorkbook = function () {
+    if (!global.Permissions || !global.Permissions.can('export_data')) { Utils.toast('Not permitted: export requires the Accountant or Admin role', 'error'); return; }
     var stamp = Utils.todayStr();
     var sheets = [];
 
@@ -143,6 +144,7 @@
 
   /* ---------------- Report Excel exports ---------------- */
   Excel.exportReportExcel = function (kind) {
+    if (!global.Permissions || !global.Permissions.can('export_data')) { Utils.toast('Not permitted: export requires the Accountant or Admin role', 'error'); return; }
     var $ = function (id) { return document.getElementById(id); };
     if (kind === 'accounts') {
       var accs = Accounting.getAccounts().map(function (a) {
@@ -241,6 +243,7 @@
   };
 
   Excel.exportAuditExcel = function () {
+    if (!global.Permissions || !global.Permissions.can('view_audit_log')) { Utils.toast('Not permitted', 'error'); return; }
     var logs = global.Audit.getLogs({});
     var rows = logs.map(function (l) {
       return [l.timestamp, l.username, l.userRole, l.action, l.details, l.ipAddress, l.browser, l.device, l.location];
@@ -249,6 +252,7 @@
   };
 
   Excel.exportUsersExcel = function () {
+    if (!global.Permissions || !global.Permissions.can('manage_users')) { Utils.toast('Not permitted', 'error'); return; }
     var users = global.Auth.allUsers();
     var rows = users.map(function (u) {
       return [u.id, u.username, u.fullName, u.email, u.role, u.status, u.created_at, u.last_login || ''];

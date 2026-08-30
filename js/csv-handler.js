@@ -125,6 +125,7 @@
     opts = opts || {};
     var schema = SCHEMAS[type];
     if (!schema) return { ok: false, error: 'Unknown import type: ' + type };
+    if (!global.Permissions || !global.Permissions.can('import_data')) return { ok: false, error: 'Not permitted: import requires the Accountant or Admin role' };
     var user = global.Auth && global.Auth.getCurrentUser();
     if (!user) return { ok: false, error: 'Not logged in' };
 
@@ -277,6 +278,7 @@
   };
 
   CSV.exportCSVFile = function (kind) {
+    if (!global.Permissions || !global.Permissions.can('export_data')) { Utils.toast('Not permitted: export requires the Accountant or Admin role', 'error'); return; }
     var user = global.Auth && global.Auth.getCurrentUser();
     var stamp = Utils.todayStr();
     if (kind === 'accounts') {
