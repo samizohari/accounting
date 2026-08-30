@@ -55,8 +55,8 @@
     }
     charts.cashFlow = new Chart($id('chartCashFlow'), {
       type: 'line',
-      data: { labels: months, datasets: [{ label: 'Net Cash Flow', data: flowData, borderColor: '#0d6efd', backgroundColor: 'rgba(13,110,253,0.12)', fill: true, tension: 0.35, pointRadius: 3 }] },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#eee' } } } }
+      data: { labels: months, datasets: [{ label: 'Net Cash Flow', data: flowData, borderColor: '#6366f1', backgroundColor: 'rgba(99,102,241,0.14)', fill: true, tension: 0.35, pointRadius: 3, pointBackgroundColor: '#6366f1' }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#eef0f6' }, ticks: { color: '#98a2b3' } }, x: { ticks: { color: '#98a2b3' } } } }
     });
 
     // Revenue vs expenses (6 months)
@@ -72,15 +72,15 @@
     charts.revExp = new Chart($id('chartRevExp'), {
       type: 'bar',
       data: { labels: labels6, datasets: [
-        { label: 'Revenue', data: revData, backgroundColor: 'rgba(25,135,84,0.75)', borderRadius: 4 },
-        { label: 'Expenses', data: expData, backgroundColor: 'rgba(220,53,69,0.7)', borderRadius: 4 }
+        { label: 'Revenue', data: revData, backgroundColor: 'rgba(16,185,129,0.78)', borderRadius: 6, borderSkipped: false },
+        { label: 'Expenses', data: expData, backgroundColor: 'rgba(244,63,94,0.72)', borderRadius: 6, borderSkipped: false }
       ]},
-      options: { responsive: true, maintainAspectRatio: false, scales: { y: { grid: { color: '#eee' } } } }
+      options: { responsive: true, maintainAspectRatio: false, scales: { y: { grid: { color: '#eef0f6' }, ticks: { color: '#98a2b3' } }, x: { ticks: { color: '#98a2b3' } } } }
     });
 
     // Expense pie (current month)
     var pnlCur = Accounting.getPnl(monthStart, today);
-    var pieLabels = [], pieData = [], pieColors = ['#dc3545', '#fd7e14', '#ffc107', '#198754', '#0dcaf0', '#6f42c1', '#d63384', '#20c997', '#0d6efd', '#adb5bd'];
+    var pieLabels = [], pieData = [], pieColors = ['#6366f1', '#8b5cf6', '#06b6d4', '#14b8a6', '#f59e0b', '#f43f5e', '#ec4899', '#10b981', '#0ea5e9', '#94a3b8'];
     pnlCur.expenses.forEach(function (r, idx) {
       pieLabels.push(r.account.name);
       pieData.push(Math.round(r.amount * 100) / 100);
