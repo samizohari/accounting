@@ -1,5 +1,6 @@
 /* ============================================================
  * mobile.css — Enhanced iPhone / mobile support
+ * (colors come from style.css design tokens per active theme)
  * ============================================================ */
 
 /* iPhone Safe Areas */
@@ -26,10 +27,10 @@
 .bottom-nav {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  background: rgba(255, 255, 255, .9);
+  background: var(--glass);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  border-top: 1px solid rgba(16, 24, 40, .06);
+  border-top: 1px solid var(--border);
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 1030;
   display: flex;
@@ -39,11 +40,11 @@
   flex: 1;
   text-align: center;
   padding: 8px 0 6px;
-  color: #98a2b3;
+  color: var(--text-faint);
   text-decoration: none;
   transition: color .15s ease;
 }
-.bottom-nav .nav-item.active { color: #6366f1; }
+.bottom-nav .nav-item.active { color: var(--accent); }
 .bottom-nav .nav-item.active .bi { transform: translateY(-1px); }
 .bottom-nav .nav-item .bi { font-size: 1.4rem; transition: transform .15s ease; }
 .bottom-nav .nav-item .nav-label { font-size: .6rem; display: block; margin-top: 2px; font-weight: 600; }
@@ -82,23 +83,6 @@
   .form-control, .form-select { min-height: 44px; }
   .input-group-touch .form-control { min-height: 44px; }
   .input-group-text { min-height: 44px; }
-}
-
-/* iOS dark mode (system preference) — only when theme is auto/system,
-   an explicit Light choice (html[data-theme="light"]) overrides it */
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) body { background-color: #0b1120; color: #e2e8f0; }
-  html:not([data-theme="light"]) .card, html:not([data-theme="light"]) .modal-content, html:not([data-theme="light"]) .offcanvas { background-color: #131c31; border-color: #1e2a45; }
-  html:not([data-theme="light"]) .card-header, html:not([data-theme="light"]) .table-light, html:not([data-theme="light"]) tfoot.table-light { background-color: #1a2438 !important; color: #e2e8f0; }
-  html:not([data-theme="light"]) .table { color: #d5dceb; }
-  html:not([data-theme="light"]) .bottom-nav { background: rgba(19, 28, 49, .9); border-top-color: rgba(148, 163, 184, .12); }
-  html:not([data-theme="light"]) .topbar { background: rgba(11, 17, 32, .8); border-color: rgba(148, 163, 184, .12); }
-  html:not([data-theme="light"]) .form-control, html:not([data-theme="light"]) .form-select { background-color: #101a2e; border-color: #26345a; color: #e2e8f0; }
-  html:not([data-theme="light"]) .drop-zone { border-color: #26345a; color: #7c8aa5; }
-  html:not([data-theme="light"]) .auth-card { background: rgba(19, 28, 49, .9); border-color: rgba(148, 163, 184, .15); }
-  html:not([data-theme="light"]) .auth-tabs { background: #1a2438; }
-  html:not([data-theme="light"]) .auth-tabs .nav-link { color: #94a3b8; }
-  html:not([data-theme="light"]) .auth-tabs .nav-link.active { background: #25345c; color: #a5b4fc; }
 }
 
 /* Prevent pull-to-refresh of the page itself inside app */

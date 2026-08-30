@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mobile.css">
 </head>
-<body class="bg-light">
+<body>
 
 <!-- ==================== AUTH SCREEN ==================== -->
 <div id="screenAuth" class="screen d-none">
@@ -198,7 +198,20 @@
       <h1 class="topbar-title mb-0" id="pageTitle">Dashboard</h1>
       <div class="ms-auto d-flex align-items-center gap-2">
         <span class="badge text-bg-light d-none d-md-inline" id="topbarRole">Viewer</span>
-        <button class="btn btn-outline-secondary btn-touch" id="btnThemeToggle" title="Toggle theme"><i class="bi bi-moon-stars"></i></button>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-touch dropdown-toggle" id="btnThemeToggle" data-bs-toggle="dropdown" title="Theme" aria-expanded="false"><i class="bi bi-palette"></i></button>
+          <ul class="dropdown-menu dropdown-menu-end theme-menu">
+            <li><a class="dropdown-item theme-item" data-theme-choice="auto"><span class="swatch auto"></span>System<span class="check"><i class="bi bi-check2"></i></span></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item theme-item" data-theme-choice="light"><span class="swatch" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"></span>Light<span class="check"><i class="bi bi-check2"></i></span></a></li>
+            <li><a class="dropdown-item theme-item" data-theme-choice="dark"><span class="swatch" style="background:linear-gradient(135deg,#6366f1,#0f172a)"></span>Dark<span class="check"><i class="bi bi-check2"></i></span></a></li>
+            <li><a class="dropdown-item theme-item" data-theme-choice="midnight"><span class="swatch" style="background:linear-gradient(135deg,#a855f7,#3b0764)"></span>Midnight<span class="check"><i class="bi bi-check2"></i></span></a></li>
+            <li><a class="dropdown-item theme-item" data-theme-choice="graphite"><span class="swatch" style="background:linear-gradient(135deg,#5b8def,#111827)"></span>Graphite<span class="check"><i class="bi bi-check2"></i></span></a></li>
+            <li><a class="dropdown-item theme-item" data-theme-choice="ocean"><span class="swatch" style="background:linear-gradient(135deg,#0891b2,#0ea5e9)"></span>Ocean<span class="check"><i class="bi bi-check2"></i></span></a></li>
+            <li><a class="dropdown-item theme-item" data-theme-choice="forest"><span class="swatch" style="background:linear-gradient(135deg,#059669,#10b981)"></span>Forest<span class="check"><i class="bi bi-check2"></i></span></a></li>
+            <li><a class="dropdown-item theme-item" data-theme-choice="rose"><span class="swatch" style="background:linear-gradient(135deg,#e11d48,#f43f5e)"></span>Rose<span class="check"><i class="bi bi-check2"></i></span></a></li>
+          </ul>
+        </div>
         <div class="dropdown">
           <button class="btn btn-outline-secondary btn-touch dropdown-toggle" data-bs-toggle="dropdown" id="topbarUserBtn">
             <i class="bi bi-person-circle"></i> <span id="topbarUser" class="d-none d-sm-inline">user</span>
@@ -637,7 +650,7 @@
             <div class="card mt-3"><div class="card-header"><i class="bi bi-sliders"></i> Preferences</div><div class="card-body">
               <div class="mb-2"><label class="form-label">Date Format</label><select class="form-select" id="prefDateFormat"><option value="MM/DD/YYYY">MM/DD/YYYY</option><option value="DD/MM/YYYY">DD/MM/YYYY</option><option value="YYYY-MM-DD">YYYY-MM-DD</option></select></div>
               <div class="mb-2"><label class="form-label">Currency</label><select class="form-select" id="prefCurrency"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>CNY</option><option>SGD</option><option>INR</option><option>AUD</option><option>CAD</option></select></div>
-              <div class="mb-2"><label class="form-label">Theme</label><select class="form-select" id="prefTheme"><option value="auto">System (auto)</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
+              <div class="mb-2"><label class="form-label">Theme</label><select class="form-select" id="prefTheme"><option value="auto">System (auto)</option><option value="light">Light</option><option value="dark">Dark</option><option value="ocean">Ocean</option><option value="forest">Forest</option><option value="rose">Rose</option><option value="midnight">Midnight</option><option value="graphite">Graphite</option></select></div>
               <button class="btn btn-primary btn-touch" id="btnSavePrefs">Save Preferences</button> <span id="prefsResult" class="ms-2 small"></span>
             </div></div>
           </div>

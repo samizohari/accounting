@@ -201,6 +201,8 @@
     Admin.updateAdminUI();
     $id('screenAuth').classList.add('d-none');
     $id('screenApp').classList.remove('d-none');
+    var appUser = Auth.getCurrentUser();
+    App.setTheme(appUser ? appUser.preferences.theme : 'auto');
     Reports.setDefaultPeriods();
     App.showView(App.view);
     App.startSessionWatch();
@@ -723,27 +725,28 @@
     setTimeout(function () { $id('prefsResult').textContent = ''; }, 2500);
   };
 
-  /* ================= THEME (light / dark / system) ================= */
+  /* ================= THEME (light / dark / ocean / forest / rose / midnight / graphite) ================= */
   App.systemDark = function () {
     return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
   };
   App.currentTheme = function () {
     var u = Auth.getCurrentUser();
     var t = (u && u.preferences.theme) || 'auto';
-    return t === 'auto' ? (App.systemDark() ? 'dark' : 'light') : t;
+    if (t === 'auto') return App.systemDark() ? 'dark' : 'light';
+    return t;
   };
   App.setTheme = function (theme) {
     theme = theme || 'auto';
     var u = Auth.getCurrentUser();
     if (u) { u.preferences.theme = theme; Auth.saveUser(u); }
-    document.documentElement.setAttribute('data-theme', theme);
-    var dark = theme === 'dark' || (theme === 'auto' && App.systemDark());
-    document.body.classList.toggle('dark-mode', dark);
-    var btn = $id('btnThemeToggle');
-    if (btn) {
-      btn.innerHTML = dark ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon-stars"></i>';
-      btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
-    }
+    // data-theme always holds the *effective* theme; CSS tokens re-skin everything
+    var effective = theme === 'auto' ? (App.systemDark() ? 'dark' : 'light') : theme;
+    document.documentElement.setAttribute('data-theme', effective);
+    document.body.classList.remove('dark-mode'); // legacy class no longer used
+    // mark the active choice in the picker menu
+    document.querySelectorAll('.theme-item').forEach(function (el) {
+      el.classList.toggle('active', el.getAttribute('data-theme-choice') === theme);
+    });
   };
 
   /* ================= IMPORT / EXPORT ================= */
@@ -1040,14 +1043,15 @@
     });
     $id('btnSavePrefs').addEventListener('click', App.savePrefs);
 
-    // Theme toggle (topbar)
-    var themeBtn = $id('btnThemeToggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function () {
-        App.setTheme(App.currentTheme() === 'dark' ? 'light' : 'dark');
-        Utils.toast(App.currentTheme() === 'dark' ? 'Dark mode on' : 'Light mode on', 'info');
+    // Theme picker (topbar dropdown)
+    document.querySelectorAll('.theme-item').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var choice = this.getAttribute('data-theme-choice');
+        App.setTheme(choice);
+        Utils.toast('Theme: ' + choice.charAt(0).toUpperCase() + choice.slice(1), 'info');
       });
-    }
+    });
     // Follow system theme changes while in "System" mode
     if (window.matchMedia) {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {

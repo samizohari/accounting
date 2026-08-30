@@ -26,6 +26,16 @@
     var monthStart = today.slice(0, 7) + '-01';
     var curMonth = today.slice(0, 7);
 
+    // Theme-aware chart colors (read active theme tokens)
+    var css = getComputedStyle(document.documentElement);
+    var accent = css.getPropertyValue('--accent').trim() || '#6366f1';
+    var chartGrid = css.getPropertyValue('--chart-grid').trim() || '#eef0f6';
+    var chartTick = css.getPropertyValue('--chart-tick').trim() || '#98a2b3';
+    var rgba = function (hex, a) {
+      var r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+      return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+    };
+
     // KPIs
     var cashAccounts = Accounting.getAccounts().filter(function (a) { return a.type === 'Asset' && /(cash|bank)/i.test(a.name); });
     var cash = 0;
@@ -55,8 +65,8 @@
     }
     charts.cashFlow = new Chart($id('chartCashFlow'), {
       type: 'line',
-      data: { labels: months, datasets: [{ label: 'Net Cash Flow', data: flowData, borderColor: '#6366f1', backgroundColor: 'rgba(99,102,241,0.14)', fill: true, tension: 0.35, pointRadius: 3, pointBackgroundColor: '#6366f1' }] },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#eef0f6' }, ticks: { color: '#98a2b3' } }, x: { ticks: { color: '#98a2b3' } } } }
+      data: { labels: months, datasets: [{ label: 'Net Cash Flow', data: flowData, borderColor: accent, backgroundColor: rgba(accent, 0.14), fill: true, tension: 0.35, pointRadius: 3, pointBackgroundColor: accent }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: chartGrid }, ticks: { color: chartTick } }, x: { ticks: { color: chartTick } } } }
     });
 
     // Revenue vs expenses (6 months)
@@ -75,7 +85,7 @@
         { label: 'Revenue', data: revData, backgroundColor: 'rgba(16,185,129,0.78)', borderRadius: 6, borderSkipped: false },
         { label: 'Expenses', data: expData, backgroundColor: 'rgba(244,63,94,0.72)', borderRadius: 6, borderSkipped: false }
       ]},
-      options: { responsive: true, maintainAspectRatio: false, scales: { y: { grid: { color: '#eef0f6' }, ticks: { color: '#98a2b3' } }, x: { ticks: { color: '#98a2b3' } } } }
+      options: { responsive: true, maintainAspectRatio: false, scales: { y: { grid: { color: chartGrid }, ticks: { color: chartTick } }, x: { ticks: { color: chartTick } } } }
     });
 
     // Expense pie (current month)

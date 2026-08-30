@@ -78,7 +78,7 @@
       rows.push([r.account.accountNumber + ' ' + r.account.name, money(r.amount)]);
     });
     html += '<h6 class="text-muted mt-3">Expenses</h6>' + tableHtml(['Account', 'Amount'], rows, [['Total Expenses', money(pnl.totalExpenses)]]);
-    html += '<div class="mt-3 p-2 bg-light rounded d-flex justify-content-between fw-bold"><span>NET INCOME</span><span class="' + moneyCls(pnl.netIncome) + '">' + money(pnl.netIncome) + '</span></div>';
+    html += '<div class="mt-3 p-2 report-total rounded d-flex justify-content-between fw-bold"><span>NET INCOME</span><span class="' + moneyCls(pnl.netIncome) + '">' + money(pnl.netIncome) + '</span></div>';
     $id('reportPnl').innerHTML = html;
   };
 
@@ -107,7 +107,7 @@
     html += '<h6 class="text-muted mt-3">Investing Activities</h6>' + tableHtml(['', 'Item', 'Amount'], iRows, [['', 'Net investing cash flow', money(cf.investTotal)]]);
     var fRows = cf.financing.map(function (r) { return ['', r.account ? r.account.name : r.label, money(r.amount)]; });
     html += '<h6 class="text-muted mt-3">Financing Activities</h6>' + tableHtml(['', 'Item', 'Amount'], fRows, [['', 'Net financing cash flow', money(cf.financeTotal)]]);
-    html += '<div class="mt-3 p-2 bg-light rounded d-flex justify-content-between fw-bold"><span>Net Change in Cash</span><span>' + money(cf.netFlow) + '</span></div>';
+    html += '<div class="mt-3 p-2 report-total rounded d-flex justify-content-between fw-bold"><span>Net Change in Cash</span><span>' + money(cf.netFlow) + '</span></div>';
     html += '<div class="mt-2 d-flex justify-content-between small"><span>Beginning cash: ' + money(cf.cashStart) + '</span><span>Ending cash: ' + money(cf.cashEnd) + '</span></div>';
     $id('reportCf').innerHTML = html;
   };
