@@ -1,0 +1,102 @@
+/* ============================================================
+ * mobile.css — Enhanced iPhone / mobile support
+ * ============================================================ */
+
+/* iPhone Safe Areas */
+.safe-area-top { padding-top: env(safe-area-inset-top); }
+.safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Touch-friendly buttons: min 44x44px */
+.btn-touch { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.btn-touch-large { min-height: 48px; min-width: 48px; }
+.btn-sm.btn-touch { min-height: 40px; min-width: 40px; }
+
+/* No hover-only interactions on touch devices */
+@media (hover: none) {
+  .hover-only { display: none; }
+  .btn:hover { /* keep Bootstrap hover states minimal on touch */ }
+}
+
+/* Smooth scrolling on iOS */
+.smooth-scroll, .content, .sidebar-nav {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* Bottom navigation bar (mobile only) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #ffffff;
+  border-top: 1px solid #dee2e6;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 1030;
+  display: flex;
+  box-shadow: 0 -2px 8px rgba(15, 23, 42, .06);
+}
+.bottom-nav .nav-item {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0 6px;
+  color: #64748b;
+  text-decoration: none;
+}
+.bottom-nav .nav-item.active { color: #0d6efd; }
+.bottom-nav .nav-item .bi { font-size: 1.4rem; }
+.bottom-nav .nav-item .nav-label { font-size: .6rem; display: block; margin-top: 2px; }
+
+/* Full-screen modal on mobile */
+@media (max-width: 576px) {
+  .modal-fullscreen-mobile .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+  }
+  .modal-fullscreen-mobile .modal-content {
+    height: 100%;
+    border-radius: 0;
+    border: none;
+  }
+  .modal-fullscreen-mobile .modal-body { overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
+}
+
+/* Tables on mobile: horizontal scroll + sticky first column */
+.table-responsive { -webkit-overflow-scrolling: touch; }
+@media (max-width: 767.98px) {
+  .table-responsive-sm { overflow-x: auto; }
+  .kpi-card { padding: 12px; }
+  .kpi-icon { width: 38px; height: 38px; font-size: 1.05rem; }
+  .kpi-value { font-size: .98rem; }
+  .content { padding: 14px 10px 80px; }
+  .topbar-title { font-size: 1rem; }
+}
+
+/* Forms on mobile: bigger inputs prevent iOS zoom */
+@media (max-width: 767.98px) {
+  input, select, textarea { font-size: 16px !important; }
+  .form-control, .form-select { min-height: 44px; }
+  .input-group-touch .form-control { min-height: 44px; }
+  .input-group-text { min-height: 44px; }
+}
+
+/* iOS dark mode (system preference) */
+@media (prefers-color-scheme: dark) {
+  body { background-color: #000; color: #fff; }
+  .card, .modal-content, .offcanvas { background-color: #1c1c1e; border-color: #2c2c2e; }
+  .card-header, .table-light, tfoot.table-light { background-color: #26262a !important; color: #e2e8f0; }
+  .table { color: #fff; }
+  .bottom-nav { background: #1c1c1e; border-top-color: #2c2c2e; }
+  .topbar { background: #1c1c1e; border-color: #2c2c2e; }
+  .form-control, .form-select { background-color: #1c1c1e; border-color: #3a3a3e; color: #fff; }
+  .drop-zone { border-color: #3a3a3e; color: #9aa4b2; }
+}
+
+/* Prevent pull-to-refresh of the page itself inside app */
+html, body { overscroll-behavior-y: none; }
+
+/* Landscape tweak for small phones */
+@media (max-width: 900px) and (orientation: landscape) {
+  .auth-wrap { padding: 8px; }
+  .auth-card { max-width: 560px; }
+}
