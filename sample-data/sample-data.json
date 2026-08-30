@@ -23,7 +23,7 @@
         "dateFormat": "MM/DD/YYYY",
         "currency": "USD",
         "timezone": "UTC",
-        "theme": "light"
+        "theme": "auto"
       }
     },
     {
@@ -46,7 +46,7 @@
         "dateFormat": "MM/DD/YYYY",
         "currency": "USD",
         "timezone": "UTC",
-        "theme": "light"
+        "theme": "auto"
       }
     },
     {
@@ -69,7 +69,7 @@
         "dateFormat": "MM/DD/YYYY",
         "currency": "USD",
         "timezone": "UTC",
-        "theme": "light"
+        "theme": "auto"
       }
     }
   ],

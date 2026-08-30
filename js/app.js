@@ -718,9 +718,32 @@
     u.preferences.currency = $id('prefCurrency').value;
     u.preferences.theme = $id('prefTheme').value;
     Auth.saveUser(u);
-    document.body.classList.toggle('dark-mode', u.preferences.theme === 'dark');
+    App.setTheme(u.preferences.theme);
     $id('prefsResult').textContent = '✓ Saved';
     setTimeout(function () { $id('prefsResult').textContent = ''; }, 2500);
+  };
+
+  /* ================= THEME (light / dark / system) ================= */
+  App.systemDark = function () {
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  };
+  App.currentTheme = function () {
+    var u = Auth.getCurrentUser();
+    var t = (u && u.preferences.theme) || 'auto';
+    return t === 'auto' ? (App.systemDark() ? 'dark' : 'light') : t;
+  };
+  App.setTheme = function (theme) {
+    theme = theme || 'auto';
+    var u = Auth.getCurrentUser();
+    if (u) { u.preferences.theme = theme; Auth.saveUser(u); }
+    document.documentElement.setAttribute('data-theme', theme);
+    var dark = theme === 'dark' || (theme === 'auto' && App.systemDark());
+    document.body.classList.toggle('dark-mode', dark);
+    var btn = $id('btnThemeToggle');
+    if (btn) {
+      btn.innerHTML = dark ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon-stars"></i>';
+      btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
   };
 
   /* ================= IMPORT / EXPORT ================= */
@@ -1017,6 +1040,23 @@
     });
     $id('btnSavePrefs').addEventListener('click', App.savePrefs);
 
+    // Theme toggle (topbar)
+    var themeBtn = $id('btnThemeToggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function () {
+        App.setTheme(App.currentTheme() === 'dark' ? 'light' : 'dark');
+        Utils.toast(App.currentTheme() === 'dark' ? 'Dark mode on' : 'Light mode on', 'info');
+      });
+    }
+    // Follow system theme changes while in "System" mode
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+        var u = Auth.getCurrentUser();
+        var t = (u && u.preferences.theme) || 'auto';
+        if (t === 'auto') App.setTheme('auto');
+      });
+    }
+
     // Session extend
     $id('sessionExtend').addEventListener('click', function (e) {
       e.preventDefault();
@@ -1038,9 +1078,9 @@
     global.Mobile.init();
     App.initAuthUI();
     App.wireEvents();
-    // theme
+    // theme (light / dark / system)
     var u = Auth.getCurrentUser();
-    if (u && u.preferences.theme === 'dark') document.body.classList.add('dark-mode');
+    App.setTheme(u ? u.preferences.theme : 'auto');
     if (Auth.validateSession()) {
       Accounting.runDueRecurring();
       Audit.pruneLogs();

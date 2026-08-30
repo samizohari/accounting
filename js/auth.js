@@ -51,7 +51,7 @@
       locked_until: null,
       force_pw_change: !!data.force_pw_change,
       activeSessionId: null,
-      preferences: { dateFormat: 'MM/DD/YYYY', currency: 'USD', timezone: 'UTC', theme: 'light' }
+      preferences: { dateFormat: 'MM/DD/YYYY', currency: 'USD', timezone: 'UTC', theme: 'auto' }
     };
     var users = Auth.allUsers();
     users.push(user);

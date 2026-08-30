@@ -198,6 +198,7 @@
       <h1 class="topbar-title mb-0" id="pageTitle">Dashboard</h1>
       <div class="ms-auto d-flex align-items-center gap-2">
         <span class="badge text-bg-light d-none d-md-inline" id="topbarRole">Viewer</span>
+        <button class="btn btn-outline-secondary btn-touch" id="btnThemeToggle" title="Toggle theme"><i class="bi bi-moon-stars"></i></button>
         <div class="dropdown">
           <button class="btn btn-outline-secondary btn-touch dropdown-toggle" data-bs-toggle="dropdown" id="topbarUserBtn">
             <i class="bi bi-person-circle"></i> <span id="topbarUser" class="d-none d-sm-inline">user</span>
@@ -636,7 +637,7 @@
             <div class="card mt-3"><div class="card-header"><i class="bi bi-sliders"></i> Preferences</div><div class="card-body">
               <div class="mb-2"><label class="form-label">Date Format</label><select class="form-select" id="prefDateFormat"><option value="MM/DD/YYYY">MM/DD/YYYY</option><option value="DD/MM/YYYY">DD/MM/YYYY</option><option value="YYYY-MM-DD">YYYY-MM-DD</option></select></div>
               <div class="mb-2"><label class="form-label">Currency</label><select class="form-select" id="prefCurrency"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>CNY</option><option>SGD</option><option>INR</option><option>AUD</option><option>CAD</option></select></div>
-              <div class="mb-2"><label class="form-label">Theme</label><select class="form-select" id="prefTheme"><option value="light">Light</option><option value="dark">Dark</option></select></div>
+              <div class="mb-2"><label class="form-label">Theme</label><select class="form-select" id="prefTheme"><option value="auto">System (auto)</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
               <button class="btn btn-primary btn-touch" id="btnSavePrefs">Save Preferences</button> <span id="prefsResult" class="ms-2 small"></span>
             </div></div>
           </div>
