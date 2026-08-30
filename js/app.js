@@ -32,20 +32,22 @@
   };
 
   var REFRESH_HOOKS = {
+    // NOTE: lazy closures — direct references like `App.renderJournal` would be
+    // undefined here because these functions are defined in part 2 of this file.
     dashboard: function () { Dashboard.render(); },
-    accounts: App.renderAccounts,
-    journal: App.renderJournal,
-    ledger: App.renderLedger,
-    'trial-balance': App.renderTB,
+    accounts: function () { App.renderAccounts(); },
+    journal: function () { App.renderJournal(); },
+    ledger: function () { App.renderLedger(); },
+    'trial-balance': function () { App.renderTB(); },
     reports: function () { Reports.setDefaultPeriods(); Reports.renderAll(); },
-    reconciliation: App.renderRecon,
-    budget: App.renderBudget,
+    reconciliation: function () { App.renderRecon(); },
+    budget: function () { App.renderBudget(); },
     data: null,
     users: function () { Admin.renderUsers(); },
     audit: function () { Admin.initAuditFilters(); Admin.renderAudit(); },
     settings: function () { Admin.fillSettingsForm(); },
     'data-mgmt': function () { Admin.updateStorageInfo(); },
-    profile: App.renderProfile
+    profile: function () { App.renderProfile(); }
   };
 
   App.showView = function (name) {
