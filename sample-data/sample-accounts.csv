@@ -1,0 +1,22 @@
+Account Number,Name,Type,Parent,Normal Balance,Status
+1000,Cash,Asset,Debit
+1010,Bank Account,Asset,Debit
+1100,Accounts Receivable,Asset,Debit
+1200,Inventory,Asset,Debit
+1300,Prepaid Expenses,Asset,Debit
+1500,Equipment,Asset,Debit
+1600,Accumulated Depreciation,Asset,Credit
+2000,Accounts Payable,Liability,Credit
+2100,Accrued Expenses,Liability,Credit
+2200,Short-term Loan,Liability,Credit
+3000,Owner Equity,Equity,Credit
+3100,Retained Earnings,Equity,Credit
+4000,Sales Revenue,Revenue,Credit
+4100,Service Revenue,Revenue,Credit
+5000,Cost of Goods Sold,Expense,Debit
+5100,Salaries & Wages,Expense,Debit
+5200,Rent Expense,Expense,Debit
+5300,Utilities,Expense,Debit
+5400,Marketing,Expense,Debit
+5500,Office Supplies,Expense,Debit
+5600,Depreciation Expense,Expense,Debit

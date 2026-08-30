@@ -1,0 +1,1640 @@
+{
+  "version": 1,
+  "app": "AccountingSystem",
+  "exportedAt": "2026-08-30T08:42:26.433Z",
+  "users": [
+    {
+      "id": "user_mtfk9xq7cxe1td",
+      "username": "admin",
+      "email": "admin@accounting.com",
+      "fullName": "System Administrator",
+      "passwordHash": "8cb3003c6b6e63476644f24580c380f67a6aef5825c49971448d1c09f0f6dd26",
+      "passwordSalt": "yupyood4n93hlhd5tymez",
+      "role": "admin",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "last_login": "2026-08-29T10:15:00.000Z",
+      "last_password_change": "2026-06-01T09:00:00.000Z",
+      "login_attempts": 0,
+      "locked_until": null,
+      "force_pw_change": false,
+      "activeSessionId": null,
+      "preferences": {
+        "dateFormat": "MM/DD/YYYY",
+        "currency": "USD",
+        "timezone": "UTC",
+        "theme": "light"
+      }
+    },
+    {
+      "id": "user_mtfk9xq8605tz7",
+      "username": "accountant",
+      "email": "accountant@accounting.com",
+      "fullName": "Head Accountant",
+      "passwordHash": "32eb5ed85ba9f737e904d5fb0168cc0a7c6f64362f06ef53fcb16afd6d317b02",
+      "passwordSalt": "m69cm2612xqskkmw43pl",
+      "role": "accountant",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "last_login": "2026-08-29T10:15:00.000Z",
+      "last_password_change": "2026-06-01T09:00:00.000Z",
+      "login_attempts": 0,
+      "locked_until": null,
+      "force_pw_change": false,
+      "activeSessionId": null,
+      "preferences": {
+        "dateFormat": "MM/DD/YYYY",
+        "currency": "USD",
+        "timezone": "UTC",
+        "theme": "light"
+      }
+    },
+    {
+      "id": "user_mtfk9xq8vgd4qj",
+      "username": "viewer",
+      "email": "viewer@accounting.com",
+      "fullName": "Read Only Viewer",
+      "passwordHash": "f00b4c071f71c1e0d8875089889bf5461cdf81bb8fca8d73dcccc08ddc3cb574",
+      "passwordSalt": "doc0um21k3446ma8bx4tv7",
+      "role": "viewer",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "last_login": "2026-08-29T10:15:00.000Z",
+      "last_password_change": "2026-06-01T09:00:00.000Z",
+      "login_attempts": 0,
+      "locked_until": null,
+      "force_pw_change": false,
+      "activeSessionId": null,
+      "preferences": {
+        "dateFormat": "MM/DD/YYYY",
+        "currency": "USD",
+        "timezone": "UTC",
+        "theme": "light"
+      }
+    }
+  ],
+  "accounts": [
+    {
+      "id": "acc_mtfk9xq8c1bb3t",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "1000",
+      "name": "Cash",
+      "type": "Asset",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8d2kvtt",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "1010",
+      "name": "Bank Account",
+      "type": "Asset",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8xrt9kz",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "1100",
+      "name": "Accounts Receivable",
+      "type": "Asset",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq86n9n8w",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "1200",
+      "name": "Inventory",
+      "type": "Asset",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq81987h9",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "1300",
+      "name": "Prepaid Expenses",
+      "type": "Asset",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8oz1vor",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "1500",
+      "name": "Equipment",
+      "type": "Asset",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8hn798t",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "1600",
+      "name": "Accumulated Depreciation",
+      "type": "Asset",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq861kf7c",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "2000",
+      "name": "Accounts Payable",
+      "type": "Liability",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8mybx9g",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "2100",
+      "name": "Accrued Expenses",
+      "type": "Liability",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8nkiuch",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "2200",
+      "name": "Short-term Loan",
+      "type": "Liability",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8kzlw7h",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "3000",
+      "name": "Owner Equity",
+      "type": "Equity",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8scp3s1",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "3100",
+      "name": "Retained Earnings",
+      "type": "Equity",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8s2dj7s",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "4000",
+      "name": "Sales Revenue",
+      "type": "Revenue",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq85h3vy7",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "4100",
+      "name": "Service Revenue",
+      "type": "Revenue",
+      "parentId": null,
+      "normalBalance": "Credit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq812wxgo",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "5000",
+      "name": "Cost of Goods Sold",
+      "type": "Expense",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8ixug05",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "5100",
+      "name": "Salaries & Wages",
+      "type": "Expense",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8s80m75",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "5200",
+      "name": "Rent Expense",
+      "type": "Expense",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8rh1203",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "5300",
+      "name": "Utilities",
+      "type": "Expense",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8bhcbnx",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "5400",
+      "name": "Marketing",
+      "type": "Expense",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq849up78",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "5500",
+      "name": "Office Supplies",
+      "type": "Expense",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "acc_mtfk9xq8kdu1n3",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountNumber": "5600",
+      "name": "Depreciation Expense",
+      "type": "Expense",
+      "parentId": null,
+      "normalBalance": "Debit",
+      "status": "active",
+      "created_at": "2026-06-01T09:00:00.000Z",
+      "updated_at": "2026-06-01T09:00:00.000Z"
+    }
+  ],
+  "entries": [
+    {
+      "id": "entry_mtfk9xq8_1",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-01",
+      "description": "Owner capital contribution",
+      "reference": "OPN-001",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-01T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-01T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq8_2",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-01",
+      "description": "Bank loan received",
+      "reference": "OPN-002",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-01T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-01T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq8_3",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-02",
+      "description": "Purchase equipment",
+      "reference": "OPN-003",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-02T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-02T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq8_4",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-05",
+      "description": "Cash sales",
+      "reference": "SL-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-05T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-05T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq8_5",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-06",
+      "description": "Credit sale to customer",
+      "reference": "SL-Jan-A",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-06T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-06T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq8_6",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-10",
+      "description": "Consulting service revenue",
+      "reference": "SV-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-10T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-10T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq8_7",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-12",
+      "description": "Monthly rent",
+      "reference": "RENT-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-12T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-12T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq8_8",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-15",
+      "description": "Salaries paid",
+      "reference": "PAY-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-15T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-15T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_9",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-18",
+      "description": "Utilities bill",
+      "reference": "UTIL-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-18T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-18T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_10",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-20",
+      "description": "Marketing campaign",
+      "reference": "MKT-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-20T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-20T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_11",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-22",
+      "description": "Inventory purchase on credit",
+      "reference": "INV-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-22T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-22T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_12",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-25",
+      "description": "Cost of goods sold",
+      "reference": "COGS-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-25T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-25T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_13",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-26",
+      "description": "Pay supplier",
+      "reference": "AP-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-26T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-26T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_14",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-27",
+      "description": "Customer payment received",
+      "reference": "AR-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-27T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-27T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_15",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-05-28",
+      "description": "Monthly depreciation",
+      "reference": "DEP-Jan",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-05-28T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-05-28T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_16",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-05",
+      "description": "Cash sales",
+      "reference": "SL-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-05T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-05T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_17",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-06",
+      "description": "Credit sale to customer",
+      "reference": "SL-Feb-A",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-06T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-06T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_18",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-10",
+      "description": "Consulting service revenue",
+      "reference": "SV-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-10T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-10T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_19",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-12",
+      "description": "Monthly rent",
+      "reference": "RENT-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-12T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-12T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_20",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-15",
+      "description": "Salaries paid",
+      "reference": "PAY-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-15T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-15T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_21",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-18",
+      "description": "Utilities bill",
+      "reference": "UTIL-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-18T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-18T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_22",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-20",
+      "description": "Marketing campaign",
+      "reference": "MKT-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-20T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-20T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_23",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-22",
+      "description": "Inventory purchase on credit",
+      "reference": "INV-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-22T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-22T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_24",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-25",
+      "description": "Cost of goods sold",
+      "reference": "COGS-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-25T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-25T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_25",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-26",
+      "description": "Pay supplier",
+      "reference": "AP-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-26T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-26T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_26",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-27",
+      "description": "Customer payment received",
+      "reference": "AR-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-27T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-27T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_27",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-06-28",
+      "description": "Monthly depreciation",
+      "reference": "DEP-Feb",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-06-28T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-06-28T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_28",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-05",
+      "description": "Cash sales",
+      "reference": "SL-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-05T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-05T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_29",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-06",
+      "description": "Credit sale to customer",
+      "reference": "SL-Mar-A",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-06T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-06T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_30",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-10",
+      "description": "Consulting service revenue",
+      "reference": "SV-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-10T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-10T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_31",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-12",
+      "description": "Monthly rent",
+      "reference": "RENT-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-12T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-12T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_32",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-15",
+      "description": "Salaries paid",
+      "reference": "PAY-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-15T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-15T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_33",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-18",
+      "description": "Utilities bill",
+      "reference": "UTIL-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-18T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-18T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_34",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-20",
+      "description": "Marketing campaign",
+      "reference": "MKT-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-20T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-20T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_35",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-22",
+      "description": "Inventory purchase on credit",
+      "reference": "INV-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-22T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-22T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_36",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-25",
+      "description": "Cost of goods sold",
+      "reference": "COGS-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-25T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-25T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_37",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-26",
+      "description": "Pay supplier",
+      "reference": "AP-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-26T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-26T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_38",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-27",
+      "description": "Customer payment received",
+      "reference": "AR-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-27T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-27T09:05:00.000Z",
+      "notes": ""
+    },
+    {
+      "id": "entry_mtfk9xq9_39",
+      "userId": "user_mtfk9xq7cxe1td",
+      "date": "2026-07-28",
+      "description": "Monthly depreciation",
+      "reference": "DEP-Mar",
+      "recurringId": null,
+      "status": "active",
+      "created_by": "user_mtfk9xq7cxe1td",
+      "created_at": "2026-07-28T09:00:00.000Z",
+      "approved_by": "user_mtfk9xq7cxe1td",
+      "approved_at": "2026-07-28T09:05:00.000Z",
+      "notes": ""
+    }
+  ],
+  "lines": [
+    {
+      "id": "line_mtfk9xq8jkckdd",
+      "entryId": "entry_mtfk9xq8_1",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 10000,
+      "credit": 0,
+      "description": "Cash contributed"
+    },
+    {
+      "id": "line_mtfk9xq8ubqgkv",
+      "entryId": "entry_mtfk9xq8_1",
+      "accountId": "acc_mtfk9xq8kzlw7h",
+      "debit": 0,
+      "credit": 10000,
+      "description": "Owner equity"
+    },
+    {
+      "id": "line_mtfk9xq8ypdh6g",
+      "entryId": "entry_mtfk9xq8_2",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 15000,
+      "credit": 0,
+      "description": "Loan proceeds to bank"
+    },
+    {
+      "id": "line_mtfk9xq8jvm4ro",
+      "entryId": "entry_mtfk9xq8_2",
+      "accountId": "acc_mtfk9xq8nkiuch",
+      "debit": 0,
+      "credit": 15000,
+      "description": "Short-term loan"
+    },
+    {
+      "id": "line_mtfk9xq8jre3ur",
+      "entryId": "entry_mtfk9xq8_3",
+      "accountId": "acc_mtfk9xq8oz1vor",
+      "debit": 5000,
+      "credit": 0,
+      "description": "Equipment purchase"
+    },
+    {
+      "id": "line_mtfk9xq8k3nian",
+      "entryId": "entry_mtfk9xq8_3",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 5000,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq8nn4c1f",
+      "entryId": "entry_mtfk9xq8_4",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 8000,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq8a4zt0c",
+      "entryId": "entry_mtfk9xq8_4",
+      "accountId": "acc_mtfk9xq8s2dj7s",
+      "debit": 0,
+      "credit": 8000,
+      "description": "Sales revenue"
+    },
+    {
+      "id": "line_mtfk9xq8qx8mu8",
+      "entryId": "entry_mtfk9xq8_5",
+      "accountId": "acc_mtfk9xq8xrt9kz",
+      "debit": 3500,
+      "credit": 0,
+      "description": "Accounts receivable"
+    },
+    {
+      "id": "line_mtfk9xq8zhhm5f",
+      "entryId": "entry_mtfk9xq8_5",
+      "accountId": "acc_mtfk9xq8s2dj7s",
+      "debit": 0,
+      "credit": 3500,
+      "description": "Sales revenue"
+    },
+    {
+      "id": "line_mtfk9xq86mii4k",
+      "entryId": "entry_mtfk9xq8_6",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 2500,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq80t6204",
+      "entryId": "entry_mtfk9xq8_6",
+      "accountId": "acc_mtfk9xq85h3vy7",
+      "debit": 0,
+      "credit": 2500,
+      "description": "Service revenue"
+    },
+    {
+      "id": "line_mtfk9xq8akbklp",
+      "entryId": "entry_mtfk9xq8_7",
+      "accountId": "acc_mtfk9xq8s80m75",
+      "debit": 1200,
+      "credit": 0,
+      "description": "Rent expense"
+    },
+    {
+      "id": "line_mtfk9xq8117616",
+      "entryId": "entry_mtfk9xq8_7",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 0,
+      "credit": 1200,
+      "description": "Paid in cash"
+    },
+    {
+      "id": "line_mtfk9xq9nqacij",
+      "entryId": "entry_mtfk9xq8_8",
+      "accountId": "acc_mtfk9xq8ixug05",
+      "debit": 3200,
+      "credit": 0,
+      "description": "Salaries & wages"
+    },
+    {
+      "id": "line_mtfk9xq9ck8j1g",
+      "entryId": "entry_mtfk9xq8_8",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 3200,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq9o1sf0p",
+      "entryId": "entry_mtfk9xq9_9",
+      "accountId": "acc_mtfk9xq8rh1203",
+      "debit": 420,
+      "credit": 0,
+      "description": "Utilities"
+    },
+    {
+      "id": "line_mtfk9xq9exgty8",
+      "entryId": "entry_mtfk9xq9_9",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 0,
+      "credit": 420,
+      "description": "Paid in cash"
+    },
+    {
+      "id": "line_mtfk9xq9g99btv",
+      "entryId": "entry_mtfk9xq9_10",
+      "accountId": "acc_mtfk9xq8bhcbnx",
+      "debit": 600,
+      "credit": 0,
+      "description": "Marketing expense"
+    },
+    {
+      "id": "line_mtfk9xq9ud17og",
+      "entryId": "entry_mtfk9xq9_10",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 600,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq9ebg7ed",
+      "entryId": "entry_mtfk9xq9_11",
+      "accountId": "acc_mtfk9xq86n9n8w",
+      "debit": 2000,
+      "credit": 0,
+      "description": "Inventory"
+    },
+    {
+      "id": "line_mtfk9xq9z621or",
+      "entryId": "entry_mtfk9xq9_11",
+      "accountId": "acc_mtfk9xq861kf7c",
+      "debit": 0,
+      "credit": 2000,
+      "description": "Accounts payable"
+    },
+    {
+      "id": "line_mtfk9xq934pu2i",
+      "entryId": "entry_mtfk9xq9_12",
+      "accountId": "acc_mtfk9xq812wxgo",
+      "debit": 1200,
+      "credit": 0,
+      "description": "COGS"
+    },
+    {
+      "id": "line_mtfk9xq9zi6rry",
+      "entryId": "entry_mtfk9xq9_12",
+      "accountId": "acc_mtfk9xq86n9n8w",
+      "debit": 0,
+      "credit": 1200,
+      "description": "Inventory out"
+    },
+    {
+      "id": "line_mtfk9xq9f979w0",
+      "entryId": "entry_mtfk9xq9_13",
+      "accountId": "acc_mtfk9xq861kf7c",
+      "debit": 1500,
+      "credit": 0,
+      "description": "Accounts payable"
+    },
+    {
+      "id": "line_mtfk9xq99kvj2w",
+      "entryId": "entry_mtfk9xq9_13",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 1500,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq90iobxl",
+      "entryId": "entry_mtfk9xq9_14",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 2500,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq900eu23",
+      "entryId": "entry_mtfk9xq9_14",
+      "accountId": "acc_mtfk9xq8xrt9kz",
+      "debit": 0,
+      "credit": 2500,
+      "description": "Accounts receivable"
+    },
+    {
+      "id": "line_mtfk9xq9irymdk",
+      "entryId": "entry_mtfk9xq9_15",
+      "accountId": "acc_mtfk9xq8kdu1n3",
+      "debit": 140,
+      "credit": 0,
+      "description": "Depreciation expense"
+    },
+    {
+      "id": "line_mtfk9xq9apy842",
+      "entryId": "entry_mtfk9xq9_15",
+      "accountId": "acc_mtfk9xq8hn798t",
+      "debit": 0,
+      "credit": 140,
+      "description": "Accumulated depreciation"
+    },
+    {
+      "id": "line_mtfk9xq9yvauk3",
+      "entryId": "entry_mtfk9xq9_16",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 8000,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq9cvb0lp",
+      "entryId": "entry_mtfk9xq9_16",
+      "accountId": "acc_mtfk9xq8s2dj7s",
+      "debit": 0,
+      "credit": 8000,
+      "description": "Sales revenue"
+    },
+    {
+      "id": "line_mtfk9xq9bw60uw",
+      "entryId": "entry_mtfk9xq9_17",
+      "accountId": "acc_mtfk9xq8xrt9kz",
+      "debit": 3500,
+      "credit": 0,
+      "description": "Accounts receivable"
+    },
+    {
+      "id": "line_mtfk9xq9qjva5s",
+      "entryId": "entry_mtfk9xq9_17",
+      "accountId": "acc_mtfk9xq8s2dj7s",
+      "debit": 0,
+      "credit": 3500,
+      "description": "Sales revenue"
+    },
+    {
+      "id": "line_mtfk9xq9wr6lof",
+      "entryId": "entry_mtfk9xq9_18",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 2500,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq91zolk5",
+      "entryId": "entry_mtfk9xq9_18",
+      "accountId": "acc_mtfk9xq85h3vy7",
+      "debit": 0,
+      "credit": 2500,
+      "description": "Service revenue"
+    },
+    {
+      "id": "line_mtfk9xq9arkl22",
+      "entryId": "entry_mtfk9xq9_19",
+      "accountId": "acc_mtfk9xq8s80m75",
+      "debit": 1200,
+      "credit": 0,
+      "description": "Rent expense"
+    },
+    {
+      "id": "line_mtfk9xq9x0pgwd",
+      "entryId": "entry_mtfk9xq9_19",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 0,
+      "credit": 1200,
+      "description": "Paid in cash"
+    },
+    {
+      "id": "line_mtfk9xq9h2l64v",
+      "entryId": "entry_mtfk9xq9_20",
+      "accountId": "acc_mtfk9xq8ixug05",
+      "debit": 3200,
+      "credit": 0,
+      "description": "Salaries & wages"
+    },
+    {
+      "id": "line_mtfk9xq9be3q0f",
+      "entryId": "entry_mtfk9xq9_20",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 3200,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq9kr9vgi",
+      "entryId": "entry_mtfk9xq9_21",
+      "accountId": "acc_mtfk9xq8rh1203",
+      "debit": 420,
+      "credit": 0,
+      "description": "Utilities"
+    },
+    {
+      "id": "line_mtfk9xq9p5i638",
+      "entryId": "entry_mtfk9xq9_21",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 0,
+      "credit": 420,
+      "description": "Paid in cash"
+    },
+    {
+      "id": "line_mtfk9xq99mtcfg",
+      "entryId": "entry_mtfk9xq9_22",
+      "accountId": "acc_mtfk9xq8bhcbnx",
+      "debit": 600,
+      "credit": 0,
+      "description": "Marketing expense"
+    },
+    {
+      "id": "line_mtfk9xq9sol67m",
+      "entryId": "entry_mtfk9xq9_22",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 600,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq9fbjmdx",
+      "entryId": "entry_mtfk9xq9_23",
+      "accountId": "acc_mtfk9xq86n9n8w",
+      "debit": 2000,
+      "credit": 0,
+      "description": "Inventory"
+    },
+    {
+      "id": "line_mtfk9xq9bn3f70",
+      "entryId": "entry_mtfk9xq9_23",
+      "accountId": "acc_mtfk9xq861kf7c",
+      "debit": 0,
+      "credit": 2000,
+      "description": "Accounts payable"
+    },
+    {
+      "id": "line_mtfk9xq9ils8dz",
+      "entryId": "entry_mtfk9xq9_24",
+      "accountId": "acc_mtfk9xq812wxgo",
+      "debit": 1200,
+      "credit": 0,
+      "description": "COGS"
+    },
+    {
+      "id": "line_mtfk9xq96o1wvy",
+      "entryId": "entry_mtfk9xq9_24",
+      "accountId": "acc_mtfk9xq86n9n8w",
+      "debit": 0,
+      "credit": 1200,
+      "description": "Inventory out"
+    },
+    {
+      "id": "line_mtfk9xq9coebpu",
+      "entryId": "entry_mtfk9xq9_25",
+      "accountId": "acc_mtfk9xq861kf7c",
+      "debit": 1500,
+      "credit": 0,
+      "description": "Accounts payable"
+    },
+    {
+      "id": "line_mtfk9xq97gox7e",
+      "entryId": "entry_mtfk9xq9_25",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 1500,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq9jxg93g",
+      "entryId": "entry_mtfk9xq9_26",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 2500,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq9z84fi4",
+      "entryId": "entry_mtfk9xq9_26",
+      "accountId": "acc_mtfk9xq8xrt9kz",
+      "debit": 0,
+      "credit": 2500,
+      "description": "Accounts receivable"
+    },
+    {
+      "id": "line_mtfk9xq9xwoz10",
+      "entryId": "entry_mtfk9xq9_27",
+      "accountId": "acc_mtfk9xq8kdu1n3",
+      "debit": 140,
+      "credit": 0,
+      "description": "Depreciation expense"
+    },
+    {
+      "id": "line_mtfk9xq989tkz1",
+      "entryId": "entry_mtfk9xq9_27",
+      "accountId": "acc_mtfk9xq8hn798t",
+      "debit": 0,
+      "credit": 140,
+      "description": "Accumulated depreciation"
+    },
+    {
+      "id": "line_mtfk9xq99bomdw",
+      "entryId": "entry_mtfk9xq9_28",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 8000,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq9ye4c3s",
+      "entryId": "entry_mtfk9xq9_28",
+      "accountId": "acc_mtfk9xq8s2dj7s",
+      "debit": 0,
+      "credit": 8000,
+      "description": "Sales revenue"
+    },
+    {
+      "id": "line_mtfk9xq9j25blm",
+      "entryId": "entry_mtfk9xq9_29",
+      "accountId": "acc_mtfk9xq8xrt9kz",
+      "debit": 3500,
+      "credit": 0,
+      "description": "Accounts receivable"
+    },
+    {
+      "id": "line_mtfk9xq9ksvj88",
+      "entryId": "entry_mtfk9xq9_29",
+      "accountId": "acc_mtfk9xq8s2dj7s",
+      "debit": 0,
+      "credit": 3500,
+      "description": "Sales revenue"
+    },
+    {
+      "id": "line_mtfk9xq9751zdh",
+      "entryId": "entry_mtfk9xq9_30",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 2500,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq95499mz",
+      "entryId": "entry_mtfk9xq9_30",
+      "accountId": "acc_mtfk9xq85h3vy7",
+      "debit": 0,
+      "credit": 2500,
+      "description": "Service revenue"
+    },
+    {
+      "id": "line_mtfk9xq96x6692",
+      "entryId": "entry_mtfk9xq9_31",
+      "accountId": "acc_mtfk9xq8s80m75",
+      "debit": 1200,
+      "credit": 0,
+      "description": "Rent expense"
+    },
+    {
+      "id": "line_mtfk9xq9dmyi51",
+      "entryId": "entry_mtfk9xq9_31",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 0,
+      "credit": 1200,
+      "description": "Paid in cash"
+    },
+    {
+      "id": "line_mtfk9xq9qvl8xv",
+      "entryId": "entry_mtfk9xq9_32",
+      "accountId": "acc_mtfk9xq8ixug05",
+      "debit": 3200,
+      "credit": 0,
+      "description": "Salaries & wages"
+    },
+    {
+      "id": "line_mtfk9xq9f1yuju",
+      "entryId": "entry_mtfk9xq9_32",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 3200,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq9bgfdk6",
+      "entryId": "entry_mtfk9xq9_33",
+      "accountId": "acc_mtfk9xq8rh1203",
+      "debit": 420,
+      "credit": 0,
+      "description": "Utilities"
+    },
+    {
+      "id": "line_mtfk9xq9shvdj7",
+      "entryId": "entry_mtfk9xq9_33",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 0,
+      "credit": 420,
+      "description": "Paid in cash"
+    },
+    {
+      "id": "line_mtfk9xq985tcsz",
+      "entryId": "entry_mtfk9xq9_34",
+      "accountId": "acc_mtfk9xq8bhcbnx",
+      "debit": 600,
+      "credit": 0,
+      "description": "Marketing expense"
+    },
+    {
+      "id": "line_mtfk9xq9qezcc3",
+      "entryId": "entry_mtfk9xq9_34",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 600,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq93de0jz",
+      "entryId": "entry_mtfk9xq9_35",
+      "accountId": "acc_mtfk9xq86n9n8w",
+      "debit": 2000,
+      "credit": 0,
+      "description": "Inventory"
+    },
+    {
+      "id": "line_mtfk9xq9z1mpfe",
+      "entryId": "entry_mtfk9xq9_35",
+      "accountId": "acc_mtfk9xq861kf7c",
+      "debit": 0,
+      "credit": 2000,
+      "description": "Accounts payable"
+    },
+    {
+      "id": "line_mtfk9xq9kifga5",
+      "entryId": "entry_mtfk9xq9_36",
+      "accountId": "acc_mtfk9xq812wxgo",
+      "debit": 1200,
+      "credit": 0,
+      "description": "COGS"
+    },
+    {
+      "id": "line_mtfk9xq9c5ai1t",
+      "entryId": "entry_mtfk9xq9_36",
+      "accountId": "acc_mtfk9xq86n9n8w",
+      "debit": 0,
+      "credit": 1200,
+      "description": "Inventory out"
+    },
+    {
+      "id": "line_mtfk9xq9lfno10",
+      "entryId": "entry_mtfk9xq9_37",
+      "accountId": "acc_mtfk9xq861kf7c",
+      "debit": 1500,
+      "credit": 0,
+      "description": "Accounts payable"
+    },
+    {
+      "id": "line_mtfk9xq98zbg6w",
+      "entryId": "entry_mtfk9xq9_37",
+      "accountId": "acc_mtfk9xq8d2kvtt",
+      "debit": 0,
+      "credit": 1500,
+      "description": "Paid from bank"
+    },
+    {
+      "id": "line_mtfk9xq9byc00q",
+      "entryId": "entry_mtfk9xq9_38",
+      "accountId": "acc_mtfk9xq8c1bb3t",
+      "debit": 2500,
+      "credit": 0,
+      "description": "Cash received"
+    },
+    {
+      "id": "line_mtfk9xq90veqsp",
+      "entryId": "entry_mtfk9xq9_38",
+      "accountId": "acc_mtfk9xq8xrt9kz",
+      "debit": 0,
+      "credit": 2500,
+      "description": "Accounts receivable"
+    },
+    {
+      "id": "line_mtfk9xq9lh4m9g",
+      "entryId": "entry_mtfk9xq9_39",
+      "accountId": "acc_mtfk9xq8kdu1n3",
+      "debit": 140,
+      "credit": 0,
+      "description": "Depreciation expense"
+    },
+    {
+      "id": "line_mtfk9xq9ft8juv",
+      "entryId": "entry_mtfk9xq9_39",
+      "accountId": "acc_mtfk9xq8hn798t",
+      "debit": 0,
+      "credit": 140,
+      "description": "Accumulated depreciation"
+    }
+  ],
+  "audit": [
+    {
+      "id": "log_mtfk9xq9x6gzsf",
+      "timestamp": "2026-08-29T10:15:00.000Z",
+      "userId": "user_mtfk9xq7cxe1td",
+      "username": "admin",
+      "userRole": "admin",
+      "action": "user_logged_in",
+      "actionType": "auth",
+      "entityType": "user",
+      "entityId": "user_mtfk9xq7cxe1td",
+      "details": "User logged in: admin (admin)",
+      "ipAddress": "192.168.1.42",
+      "userAgent": "",
+      "browser": "Chrome",
+      "device": "Desktop",
+      "location": "Singapore (simulated)",
+      "sessionId": "tok_sample1",
+      "impersonatorId": null,
+      "success": true
+    },
+    {
+      "id": "log_mtfk9xq9wip60h",
+      "timestamp": "2026-08-29T10:16:00.000Z",
+      "userId": "user_mtfk9xq7cxe1td",
+      "username": "admin",
+      "userRole": "admin",
+      "action": "data_imported",
+      "actionType": "data",
+      "entityType": "system",
+      "entityId": "",
+      "details": "Loaded sample chart of accounts and journal entries",
+      "ipAddress": "192.168.1.42",
+      "userAgent": "",
+      "browser": "Chrome",
+      "device": "Desktop",
+      "location": "Singapore (simulated)",
+      "sessionId": "tok_sample1",
+      "impersonatorId": null,
+      "success": true
+    }
+  ],
+  "auditArchive": [],
+  "settings": {
+    "company_name": "My Company",
+    "default_currency": "USD",
+    "date_format": "MM/DD/YYYY",
+    "timezone": "UTC",
+    "fiscal_year_start": "January",
+    "session_timeout": 30,
+    "max_login_attempts": 5,
+    "password_expiry_days": 90,
+    "enable_2fa": false,
+    "force_pw_change_first_login": false,
+    "auto_backup_frequency": "none",
+    "backup_retention_days": 30,
+    "log_retention_days": 90,
+    "max_file_upload_size": 50,
+    "allowed_file_types": [
+      "csv",
+      "xlsx",
+      "xls"
+    ],
+    "enable_notifications": true,
+    "in_app_notifications": true,
+    "critical_alerts": true
+  },
+  "budget": [
+    {
+      "id": "bgt_mtfk9xq9fvhagu",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountId": "acc_mtfk9xq8s2dj7s",
+      "period": "2026-08",
+      "amount": 8500
+    },
+    {
+      "id": "bgt_mtfk9xq9ve0v5v",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountId": "acc_mtfk9xq85h3vy7",
+      "period": "2026-08",
+      "amount": 2500
+    },
+    {
+      "id": "bgt_mtfk9xq9a0thsu",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountId": "acc_mtfk9xq812wxgo",
+      "period": "2026-08",
+      "amount": 1300
+    },
+    {
+      "id": "bgt_mtfk9xq99qjbd1",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountId": "acc_mtfk9xq8ixug05",
+      "period": "2026-08",
+      "amount": 3200
+    },
+    {
+      "id": "bgt_mtfk9xq9lgh2o2",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountId": "acc_mtfk9xq8s80m75",
+      "period": "2026-08",
+      "amount": 1200
+    },
+    {
+      "id": "bgt_mtfk9xq9rq8zl7",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountId": "acc_mtfk9xq8rh1203",
+      "period": "2026-08",
+      "amount": 450
+    },
+    {
+      "id": "bgt_mtfk9xq9tvbixm",
+      "userId": "user_mtfk9xq7cxe1td",
+      "accountId": "acc_mtfk9xq8bhcbnx",
+      "period": "2026-08",
+      "amount": 700
+    }
+  ],
+  "recon": [],
+  "recurring": [],
+  "loginHistory": [
+    {
+      "id": "lh_mtfk9xq9kx3t5k",
+      "userId": "user_mtfk9xq7cxe1td",
+      "identifier": "admin",
+      "timestamp": "2026-08-29T10:15:00.000Z",
+      "success": true,
+      "method": "password",
+      "ipAddress": "192.168.1.42",
+      "browser": "Chrome",
+      "device": "Desktop"
+    }
+  ],
+  "meta": {
+    "seeded": true
+  }
+}

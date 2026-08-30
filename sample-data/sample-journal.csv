@@ -1,0 +1,79 @@
+Date,Reference,Description,Account Number,Debit,Credit
+2026-05-01,OPN-001,Owner capital contribution,1000,10000,
+2026-05-01,OPN-001,Owner capital contribution,3000,,10000
+2026-05-01,OPN-002,Bank loan received,1010,15000,
+2026-05-01,OPN-002,Bank loan received,2200,,15000
+2026-05-02,OPN-003,Purchase equipment,1500,5000,
+2026-05-02,OPN-003,Purchase equipment,1010,,5000
+2026-05-05,SL-Jan,Cash sales,1000,8000,
+2026-05-05,SL-Jan,Cash sales,4000,,8000
+2026-05-06,SL-Jan-A,Credit sale to customer,1100,3500,
+2026-05-06,SL-Jan-A,Credit sale to customer,4000,,3500
+2026-05-10,SV-Jan,Consulting service revenue,1000,2500,
+2026-05-10,SV-Jan,Consulting service revenue,4100,,2500
+2026-05-12,RENT-Jan,Monthly rent,5200,1200,
+2026-05-12,RENT-Jan,Monthly rent,1000,,1200
+2026-05-15,PAY-Jan,Salaries paid,5100,3200,
+2026-05-15,PAY-Jan,Salaries paid,1010,,3200
+2026-05-18,UTIL-Jan,Utilities bill,5300,420,
+2026-05-18,UTIL-Jan,Utilities bill,1000,,420
+2026-05-20,MKT-Jan,Marketing campaign,5400,600,
+2026-05-20,MKT-Jan,Marketing campaign,1010,,600
+2026-05-22,INV-Jan,Inventory purchase on credit,1200,2000,
+2026-05-22,INV-Jan,Inventory purchase on credit,2000,,2000
+2026-05-25,COGS-Jan,Cost of goods sold,5000,1200,
+2026-05-25,COGS-Jan,Cost of goods sold,1200,,1200
+2026-05-26,AP-Jan,Pay supplier,2000,1500,
+2026-05-26,AP-Jan,Pay supplier,1010,,1500
+2026-05-27,AR-Jan,Customer payment received,1000,2500,
+2026-05-27,AR-Jan,Customer payment received,1100,,2500
+2026-05-28,DEP-Jan,Monthly depreciation,5600,140,
+2026-05-28,DEP-Jan,Monthly depreciation,1600,,140
+2026-06-05,SL-Feb,Cash sales,1000,8000,
+2026-06-05,SL-Feb,Cash sales,4000,,8000
+2026-06-06,SL-Feb-A,Credit sale to customer,1100,3500,
+2026-06-06,SL-Feb-A,Credit sale to customer,4000,,3500
+2026-06-10,SV-Feb,Consulting service revenue,1000,2500,
+2026-06-10,SV-Feb,Consulting service revenue,4100,,2500
+2026-06-12,RENT-Feb,Monthly rent,5200,1200,
+2026-06-12,RENT-Feb,Monthly rent,1000,,1200
+2026-06-15,PAY-Feb,Salaries paid,5100,3200,
+2026-06-15,PAY-Feb,Salaries paid,1010,,3200
+2026-06-18,UTIL-Feb,Utilities bill,5300,420,
+2026-06-18,UTIL-Feb,Utilities bill,1000,,420
+2026-06-20,MKT-Feb,Marketing campaign,5400,600,
+2026-06-20,MKT-Feb,Marketing campaign,1010,,600
+2026-06-22,INV-Feb,Inventory purchase on credit,1200,2000,
+2026-06-22,INV-Feb,Inventory purchase on credit,2000,,2000
+2026-06-25,COGS-Feb,Cost of goods sold,5000,1200,
+2026-06-25,COGS-Feb,Cost of goods sold,1200,,1200
+2026-06-26,AP-Feb,Pay supplier,2000,1500,
+2026-06-26,AP-Feb,Pay supplier,1010,,1500
+2026-06-27,AR-Feb,Customer payment received,1000,2500,
+2026-06-27,AR-Feb,Customer payment received,1100,,2500
+2026-06-28,DEP-Feb,Monthly depreciation,5600,140,
+2026-06-28,DEP-Feb,Monthly depreciation,1600,,140
+2026-07-05,SL-Mar,Cash sales,1000,8000,
+2026-07-05,SL-Mar,Cash sales,4000,,8000
+2026-07-06,SL-Mar-A,Credit sale to customer,1100,3500,
+2026-07-06,SL-Mar-A,Credit sale to customer,4000,,3500
+2026-07-10,SV-Mar,Consulting service revenue,1000,2500,
+2026-07-10,SV-Mar,Consulting service revenue,4100,,2500
+2026-07-12,RENT-Mar,Monthly rent,5200,1200,
+2026-07-12,RENT-Mar,Monthly rent,1000,,1200
+2026-07-15,PAY-Mar,Salaries paid,5100,3200,
+2026-07-15,PAY-Mar,Salaries paid,1010,,3200
+2026-07-18,UTIL-Mar,Utilities bill,5300,420,
+2026-07-18,UTIL-Mar,Utilities bill,1000,,420
+2026-07-20,MKT-Mar,Marketing campaign,5400,600,
+2026-07-20,MKT-Mar,Marketing campaign,1010,,600
+2026-07-22,INV-Mar,Inventory purchase on credit,1200,2000,
+2026-07-22,INV-Mar,Inventory purchase on credit,2000,,2000
+2026-07-25,COGS-Mar,Cost of goods sold,5000,1200,
+2026-07-25,COGS-Mar,Cost of goods sold,1200,,1200
+2026-07-26,AP-Mar,Pay supplier,2000,1500,
+2026-07-26,AP-Mar,Pay supplier,1010,,1500
+2026-07-27,AR-Mar,Customer payment received,1000,2500,
+2026-07-27,AR-Mar,Customer payment received,1100,,2500
+2026-07-28,DEP-Mar,Monthly depreciation,5600,140,
+2026-07-28,DEP-Mar,Monthly depreciation,1600,,140
