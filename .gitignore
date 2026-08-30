@@ -1,0 +1,85 @@
+# ============================================================
+# .gitignore — enhanced for PRIVATE repository (spec §3.3)
+# NOTE: templates/*.xlsx and sample-data/*.csv|json are
+# intentionally re-included below (negations) because they are
+# shipped deliverables, not user data.
+# ============================================================
+
+# OS files
+.DS_Store
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Temporary files
+*.tmp
+.temp
+~$
+*.log
+*.cache
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# User data (exclude sample data from version control)
+*.csv
+*.xlsx
+*.xls
+user-data/
+data/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Secrets
+secrets.json
+.secrets
+*.key
+*.pem
+*.crt
+*.p12
+
+# Build files
+dist/
+build/
+out/
+coverage/
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Dependency files (if any)
+node_modules/
+bower_components/
+vendor/
+
+# IDE files
+*.iml
+.project
+.settings/
+.classpath
+
+# --- Ship shipped templates & sample data (negations) ---
+!templates/
+!templates/*.xlsx
+!sample-data/
+!sample-data/*.csv
+!sample-data/*.json
